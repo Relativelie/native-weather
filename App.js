@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import Menu from './components/Menu';
 import { REACT_APP_API_KEY_WEATHER, REACT_APP_API_ENDPOINT_WEATHER } from '@env'
 import Weather from './components/Weather';
+import * as Location from 'expo-location';
+import { errorTexts } from './components/openWeatherApiErrors';
+
+
 
 const App = () => {
   const [cityInputText, setCityInputText] = useState("Омск");
   const [selectedCity, setSelectedCity] = useState("Омск");
   const [isCelsius, setIsCelsius] = useState(true);
-  const [weatherData, setWeatherData] = useState([])
-  const [isLoading, setLoading] = useState([])
+  const [weatherData, setWeatherData] = useState([]);
+  const [locationLoading, setLocationLoading] = useState(false);
 
 
   useEffect(() => {
@@ -23,19 +27,19 @@ const App = () => {
     const result = await response.json();
 
     if (result.cod === "404") {
-      setWeatherData(["Пожалуйста, введите корректное наименование города"])
+      setWeatherData([errorTexts[404]])
     }
 
     else if (result.cod === "401") {
-      setWeatherData([`Доступ ограничен, обратитесь в службу тех.поддержки (error: ${result.cod})`])
+      setWeatherData([errorTexts[401] + result.cod])
     }
 
     else if (result.cod === "429") {
-      setWeatherData([`Повторите запрос позднее или обратитесь в службу тех.поддержки(error: ${result.cod})`])
+      setWeatherData([errorTexts[429] + result.cod])
     }
 
     else if (["500", "502", "503", "504"].indexOf(result.cod) != -1) {
-      setWeatherData([`Пожалуйста, обратитесь в службу тех.поддержки (error: ${result.cod})`])
+      setWeatherData([errorTexts[500] + result.cod])
     }
 
     else {
@@ -53,12 +57,31 @@ const App = () => {
     }
   };
 
+
+  const getLocation = async () => {
+
+    //show loading display while get location
+    setWeatherData([])
+
+    // get latitude and longitude
+    let locationData = await Location.getCurrentPositionAsync({});
+
+    // get city
+    let regionName = await Location.reverseGeocodeAsync({
+      latitude: locationData.coords.latitude,
+      longitude: locationData.coords.longitude,
+    });
+
+    setCityInputText(regionName[0].city)
+    setSelectedCity(regionName[0].city)
+  }
+
   // entering text in the city input field
   const onChangeInputText = (e) => {
     setCityInputText(e)
   }
 
-  // another city selected to show the weather
+  // selected new city
   const changeSelectedCity = () => {
     if (cityInputText !== selectedCity) {
       setSelectedCity(cityInputText);
@@ -72,9 +95,10 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="dark-content" hidden={false} backgroundColor="#10BCD4" translucent={true} />
+      <StatusBar hidden={false} backgroundColor="#6592be" />
       <Menu city={cityInputText} onChangeInputText={onChangeInputText}
-        changeTempState={changeTempState} isCelsius={isCelsius} changeSelectedCity={changeSelectedCity} />
+        changeTempState={changeTempState} isCelsius={isCelsius}
+        changeSelectedCity={changeSelectedCity} getLocation={getLocation} />
       <Weather data={weatherData} isCelsius={isCelsius} />
     </View>
   );
@@ -85,6 +109,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#6592be'
   },
 });

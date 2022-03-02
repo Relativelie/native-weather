@@ -6,7 +6,7 @@ import LoadingProcess from "./weatherComponents/LoadingProcess";
 
 
 const Weather = (props) => {
-    
+
     const [isLoading, setIsLoading] = useState(false)
 
     // loading value from api
@@ -32,7 +32,7 @@ const Weather = (props) => {
                 return <DisplayedErrorData data={props.data} />
             }
             else return (
-                <DisplayedSuccessfulData data={props.data} />
+                <DisplayedSuccessfulData data={props.data} isCelsius={props.isCelsius}/>
             )
         }
     }

@@ -4,12 +4,15 @@ import SwitchElem from './menuComponents/SwitchElem';
 
 
 const Menu = (props) => {
+
   const inputInFocus = useRef();
 
   // input is in focus when pressing on "change city"
   const inputFocus = () => {
     inputInFocus.current.focus();
   }
+
+
 
 
   return (
@@ -29,7 +32,7 @@ const Menu = (props) => {
         <Text onPress={() => inputFocus()}>Сменить город</Text>
         <View style={styles.location}>
           <Image source={require('../assets/location.webp')} />
-          <Text>Мое местоположение</Text>
+          <Text onPress={() => props.getLocation()}>Мое местоположение</Text>
         </View>
       </View>
 
@@ -39,8 +42,7 @@ const Menu = (props) => {
 
 const styles = StyleSheet.create({
   menuContainer: {
-    flex: .6,
-    paddingTop: 30
+    flex: .6
   },
   cityAndSwitch: {
     flexDirection: "row",
