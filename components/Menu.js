@@ -1,18 +1,15 @@
 import { useRef } from 'react';
-import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Switch, Image } from 'react-native';
-import SwitchElem from './SwitchElem';
+import { StyleSheet, Text, View, TextInput, Image } from 'react-native';
+import SwitchElem from './menuComponents/SwitchElem';
 
 
 const Menu = (props) => {
-  const lastNameRef = useRef();
-  console.log(props)
+  const inputInFocus = useRef();
 
-
+  // input is in focus when pressing on "change city"
   const inputFocus = () => {
-    lastNameRef.current.focus();
+    inputInFocus.current.focus();
   }
-
 
 
   return (
@@ -20,18 +17,18 @@ const Menu = (props) => {
       <View style={styles.cityAndSwitch}>
         <TextInput
           style={styles.inputElem}
-          ref={lastNameRef}
-          onChangeText={(e) => props.onChangeCity(e)}
+          ref={inputInFocus}
+          onChangeText={(e) => props.onChangeInputText(e)}
           value={props.city}
-          onEndEditing={() => props.changes()}
+          onEndEditing={() => props.changeSelectedCity()}
         />
-        <SwitchElem style={styles.switchElem} changeTempState={props.changeTempState} isCelsius={props.isCelsius}/>
+        <SwitchElem style={styles.switchElem} changeTempState={props.changeTempState} isCelsius={props.isCelsius} />
       </View>
 
-      <View style={ styles.buttons }>
+      <View style={styles.buttons}>
         <Text onPress={() => inputFocus()}>Сменить город</Text>
-        <View style={ styles.location }>
-          <Image source = { require('../assets/location.webp') }/>
+        <View style={styles.location}>
+          <Image source={require('../assets/location.webp')} />
           <Text>Мое местоположение</Text>
         </View>
       </View>
@@ -56,7 +53,7 @@ const styles = StyleSheet.create({
   buttons: {
     flexDirection: "row",
     justifyContent: "space-evenly"
-  }, 
+  },
   location: {
     flexDirection: "row"
   }
