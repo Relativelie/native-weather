@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, View, StatusBar } from 'react-native';
+import { View, StatusBar, Keyboard } from 'react-native';
 import Menu from './components/Menu';
 import { REACT_APP_API_KEY_WEATHER, REACT_APP_API_ENDPOINT_WEATHER } from '@env'
 import Weather from './components/Weather';
 import * as Location from 'expo-location';
-import { errorTexts } from './components/openWeatherApiErrors';
+import { errorTexts } from './components/weatherComponents/openWeatherApiErrors';
+import { appStyles } from './stylesheets/styles';
+
+import AppLoading from 'expo-app-loading';
+import fonts from './hooks/useFonts';
 
 
 
@@ -13,8 +17,7 @@ const App = () => {
   const [selectedCity, setSelectedCity] = useState("Омск");
   const [isCelsius, setIsCelsius] = useState(true);
   const [weatherData, setWeatherData] = useState([]);
-  const [locationLoading, setLocationLoading] = useState(false);
-
+  const [IsReady, SetIsReady] = useState(false);
 
   useEffect(() => {
     getWeather();
@@ -57,6 +60,17 @@ const App = () => {
     }
   };
 
+  if (!IsReady) {
+    return (
+      <AppLoading
+        startAsync={fonts}
+        onFinish={() => SetIsReady(true)}
+        onError={() => {}}
+        onError={console.warn}
+      />
+    );
+  }
+
 
   const getLocation = async () => {
 
@@ -86,6 +100,7 @@ const App = () => {
     if (cityInputText !== selectedCity) {
       setSelectedCity(cityInputText);
     }
+    Keyboard.dismiss();
   }
 
   // switch type of temp
@@ -93,9 +108,10 @@ const App = () => {
     setIsCelsius(!isCelsius);
   }
 
+
   return (
-    <View style={styles.container}>
-      <StatusBar hidden={false} backgroundColor="#6592be" />
+    <View style={appStyles.container} onStartShouldSetResponder={() => changeSelectedCity()}>
+      <StatusBar hidden={false} backgroundColor="#6592be"/>
       <Menu city={cityInputText} onChangeInputText={onChangeInputText}
         changeTempState={changeTempState} isCelsius={isCelsius}
         changeSelectedCity={changeSelectedCity} getLocation={getLocation} />
@@ -105,10 +121,3 @@ const App = () => {
 }
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6592be'
-  },
-});

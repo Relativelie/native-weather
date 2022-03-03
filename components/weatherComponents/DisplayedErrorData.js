@@ -1,23 +1,15 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text } from "react-native";
+import { generalSt } from '../../stylesheets/styles';
 
 
 const DisplayedErrorData = ({data}) => {
 
     return (
         <View>
-            <Text style={styles.serviceAnnouncement}>{data[0]}</Text>
+            <Text style={generalSt.serviceAnnouncement}>{data[0]}</Text>
         </View>
     )
 }
-
-
-const styles = StyleSheet.create({
-
-    serviceAnnouncement: {
-        textAlign: "center"
-    }
-})
-
 
 
 export default DisplayedErrorData;

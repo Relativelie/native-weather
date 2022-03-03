@@ -1,22 +1,15 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text } from "react-native"
+import { generalSt } from '../../stylesheets/styles';
 
 
 const LoadingProcess = () => {
 
     return (
         <View>
-            <Text style={styles.serviceAnnouncement}>Loading...</Text>
+            <Text style={generalSt.serviceAnnouncement}>Loading...</Text>
         </View>
     )
 }
-
-
-const styles = StyleSheet.create({
-    serviceAnnouncement: {
-        textAlign: "center"
-    }
-})
-
 
 
 export default LoadingProcess;

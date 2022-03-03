@@ -1,9 +1,8 @@
-import { View, Text, StyleSheet, ImageBackground } from "react-native"
-
+import { View, Text, ImageBackground } from "react-native";
+import { weatherSt, generalSt } from '../../stylesheets/styles';
 
 
 const DisplayedSuccessfulData = (props) => {
-
 
     // convert to wind direction
     const convertWindValue = (value) => {
@@ -30,70 +29,60 @@ const DisplayedSuccessfulData = (props) => {
 
     return (
 
-        <View style={styles.weatherContainer}>
-            <View style={styles.temp}>
-                <View style={styles.tempElem}>
-                    <View style={{ width: 110, height: 130 }}>
-                        <ImageBackground style={styles.descriptionImage} source={{ uri: props.data.icon }} />
+        <View style={weatherSt.weatherContainer} >
+
+            <View style={weatherSt.temp}>
+                <View style={weatherSt.tempElem}>
+                    <View style={weatherSt.imgContainer}>
+                        <ImageBackground style={weatherSt.descriptionImage} source={{ uri: props.data.icon }} />
                     </View>
-                    <Text style={styles.tempText}>{convertTempValue(props.data.temp)}</Text>
+                    <Text style={weatherSt.tempText}>{convertTempValue(props.data.temp)}</Text>
                 </View>
 
-                <View>
-                    <Text>{props.data.description}</Text>
+                <View style={weatherSt.description}>
+                    <Text style={weatherSt.descriptionText}>{props.data.description}</Text>
                 </View>
-
             </View>
-            <View style={styles.otherValues}>
-                <View style={styles.r}>
-                    <Text>Ветер</Text>
-                    <Text>{props.data.windSpeed}м/с, {convertWindValue(props.data.windDeg)}</Text>
+
+            <View style={weatherSt.otherValues}>
+
+                <View style={weatherSt.otherValuesElem}>
+                    <View>
+                        <Text style={generalSt.title}>Ветер</Text>
+                        <Text style={weatherSt.descriptionText}>
+                            <Text style={weatherSt.descriptionTextBold}>{props.data.windSpeed} </Text>
+                            м/с, {convertWindValue(props.data.windDeg)}
+                        </Text>
+                    </View>
+                    <View>
+                        <Text style={generalSt.title}>Влажность</Text>
+                        <Text style={weatherSt.descriptionText}>
+                            <Text style={weatherSt.descriptionTextBold}>{props.data.humidity} </Text>
+                            %
+                        </Text>
+                    </View>
                 </View>
-                <View>
-                    <Text>Влажность</Text>
-                    <Text>{props.data.humidity}%</Text>
+
+                <View style={weatherSt.otherValuesElem}>
+                    <View>
+                        <Text style={generalSt.title}>Давление</Text>
+                        <Text style={weatherSt.descriptionText}>
+                            <Text style={weatherSt.descriptionTextBold}>{(props.data.pressure * 0.75).toFixed(0)} </Text>
+                            мм рт.ст
+                        </Text>
+                    </View>
+                    <View>
+                        <Text style={generalSt.title}>Вероятность дождя</Text>
+                        <Text style={weatherSt.descriptionText}>
+                            <Text style={weatherSt.descriptionTextBold}>{props.data.rain} </Text>
+                            %
+                        </Text>
+                    </View>
                 </View>
-                <View>
-                    <Text>Давление</Text>
-                    <Text>{(props.data.pressure * 0.75).toFixed(0)} мм рт.ст</Text>
-                </View>
-                <View>
-                    <Text>Вероятность дождя</Text>
-                    <Text>{props.data.rain}%</Text>
-                </View>
+
             </View>
         </View>
     )
 }
-
-
-
-const styles = StyleSheet.create({
-    weatherContainer: {
-        flex: 5
-    },
-
-    temp: {
-        flex: 2,
-        justifyContent: "center",
-        alignItems: "center"
-    },
-
-    tempElem: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
-    tempText: {
-        fontSize: 60
-    },
-
-    descriptionImage: {
-        flex: 1
-    }
-
-})
-
 
 export default DisplayedSuccessfulData
