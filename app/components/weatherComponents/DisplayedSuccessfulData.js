@@ -4,23 +4,23 @@ import { weatherSt, generalSt } from '../../stylesheets/styles';
 
 const DisplayedSuccessfulData = (props) => {
 
-    // convert to wind direction
+    // Convert to wind direction.
     const convertWindValue = (value) => {
         if (!isNaN(value)) {
             const windtDerictions = ["северный", "северо-восточный", "восточный", "юго-восточный", "южный",
                 "юго-западный", "западный", "северо-западный", "северный"];
 
-            // limit wind direction to 360 degrees
+            // Limit wind direction to 360 degrees.
             let intValue = Math.floor(value / 360);
             let floatValue = value % 360;
 
-            // matching up with the wind array
+            // Matching up with the wind array.
             let directionIndex = Math.round(floatValue / 45) + intValue;
             return windtDerictions[directionIndex - 1]
         }
     }
 
-    // convert temp to fahrenheit
+    // Convert temp to fahrenheit.
     const convertTempValue = (value) => {
         let temp = props.isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}F`;
         return temp

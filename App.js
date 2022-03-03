@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, StatusBar, Keyboard } from 'react-native';
+import { View, StatusBar, Keyboard, Text } from 'react-native';
 import AppLoading from 'expo-app-loading';
 
 import { appStyles } from './app/stylesheets/styles';
@@ -9,6 +9,7 @@ import Weather from './app/components/Weather';
 import { errorTexts } from './app/components/weatherComponents/openWeatherApiErrors';
 import { getWeather } from './app/requests/getWeather';
 import { getLocation } from './app/requests/getLocation';
+import LoadingProcess from './app/components/weatherComponents/LoadingProcess';
 
 
 
@@ -18,6 +19,7 @@ const App = () => {
   const [isCelsius, setIsCelsius] = useState(true);
   const [weatherData, setWeatherData] = useState([]);
   const [IsReady, SetIsReady] = useState(false);
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const App = () => {
     }
   }
 
-  // get fonts
+  // Get fonts.
   if (!IsReady) {
     return (
       <AppLoading
@@ -60,30 +62,33 @@ const App = () => {
   }
 
   const location = async () => {
-    //show loading display while get location
-    setWeatherData([])
+    //Show loading display while get location.
+    setIsLoadingLocation(true)
 
-    // get location info
-    let cityName = await getLocation()
-
-    setCityInputText(cityName)
-    setSelectedCity(cityName)
+    // Get location info.
+    let cityName = await getLocation();
+    setIsLoadingLocation(false);
+    
+    if (!cityName?.error) {
+      setCityInputText(cityName.city);
+      setSelectedCity(cityName.city);
+    }
   }
 
-  // entering text in the city input field
+  // Entering text in the city input field.
   const onChangeInputText = (e) => {
     setCityInputText(e)
   }
 
-  // selected new city
+  // Selected new city.
   const changeSelectedCity = () => {
-    if (cityInputText !== selectedCity) {
+    if (cityInputText !== selectedCity && cityInputText !== "") {
       setSelectedCity(cityInputText);
     }
     Keyboard.dismiss();
   }
 
-  // switch type of temp
+  // Switch type of temp.
   const changeTempState = () => {
     setIsCelsius(!isCelsius);
   }
@@ -91,11 +96,11 @@ const App = () => {
 
   return (
     <View style={appStyles.container} onStartShouldSetResponder={() => changeSelectedCity()}>
-      <StatusBar hidden={false} backgroundColor="#6592be" />
+      <StatusBar hidden={false} backgroundColor="#6592be" barStyle={"light-content"} setTranslucent={true}/>
       <Menu city={cityInputText} onChangeInputText={onChangeInputText}
         changeTempState={changeTempState} isCelsius={isCelsius}
         changeSelectedCity={changeSelectedCity} location={location} />
-      <Weather data={weatherData} isCelsius={isCelsius} />
+      {isLoadingLocation ? <LoadingProcess /> : <Weather data={weatherData} isCelsius={isCelsius} />}
     </View>
   );
 }

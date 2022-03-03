@@ -12,7 +12,7 @@ export const generalSt = StyleSheet.create({
     title: {
         fontSize: 15,
         fontFamily: fontFamilyNoto,
-        color: titleAndSwitchColor,
+        color: titleAndSwitchColor
     },
 
     serviceAnnouncement: {
@@ -29,6 +29,7 @@ export const appStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#6592be',
+        paddingTop: Platform.OS === "android" ? 0: 40
     }
     
 });
@@ -67,13 +68,30 @@ export const menuSt = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 7,
         width: 70,
-        height: 25
+        height: 27
     },
 
     textBlockElem: {
         width: "50%",
         alignItems: "center"
     },
+
+    textSwitch: {
+        fontSize: 18,
+        color: titleAndSwitchColor,
+        width: "100%",
+        height: "100%", 
+        textAlign: "center"
+    }, 
+
+    commonFont: {
+        fontFamily: fontFamilyNoto,
+    },
+
+    boldFont: {
+        fontFamily: fontFamilyNotoBold,
+        fontWeight: "bold"
+    }
 });
 
 export const weatherSt = StyleSheet.create({
@@ -111,14 +129,14 @@ export const weatherSt = StyleSheet.create({
     },
 
     descriptionText: {
-        fontSize: 17,
+        fontSize: 20,
         fontFamily: fontFamilyNoto,
         color: mainValuesFontColor
     },
 
     descriptionTextBold: {
         fontFamily: fontFamilyNotoBold,
-        fontWeight: "800"
+        fontWeight: "bold"
     },
 
     descriptionImage: {

@@ -11,7 +11,7 @@ const Menu = (props) => {
 
   const inputInFocus = useRef();
 
-  // input is in focus when pressing on "change city"
+  // Input is in focus when pressing on "change city".
   const inputFocus = () => {
     inputInFocus.current.focus();
   }
@@ -37,7 +37,7 @@ const Menu = (props) => {
         location={props.location} />
 
     </View>
-  );
+  )
 }
 
-export default Menu;
+export default Menu

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import DisplayedErrorData from "./weatherComponents/DisplayedErrorData";
 import DisplayedSuccessfulData from "./weatherComponents/DisplayedSuccessfulData";
 import LoadingProcess from "./weatherComponents/LoadingProcess";
@@ -9,7 +10,7 @@ const Weather = (props) => {
     const [isLoading, setIsLoading] = useState(false);
 
 
-    // loading value from api
+    // Loading value from api.
     useEffect(() => {
         if (props.data.length === 0) {
             setIsLoading(true);
@@ -19,7 +20,7 @@ const Weather = (props) => {
         }
     })
 
-    // displayed components
+    // Displayed components.
     const displayedValue = () => {
         if (isLoading) {
             return <LoadingProcess />
