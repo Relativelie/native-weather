@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { View, StatusBar, Keyboard } from 'react-native';
-import Menu from './components/Menu';
-import { REACT_APP_API_KEY_WEATHER, REACT_APP_API_ENDPOINT_WEATHER } from '@env'
-import Weather from './components/Weather';
-import * as Location from 'expo-location';
-import { errorTexts } from './components/weatherComponents/openWeatherApiErrors';
-import { appStyles } from './stylesheets/styles';
-
 import AppLoading from 'expo-app-loading';
-import fonts from './hooks/useFonts';
+
+import { appStyles } from './app/stylesheets/styles';
+import fonts from './app/components/hooks/useFonts';
+import Menu from './app/components/Menu';
+import Weather from './app/components/Weather';
+import { errorTexts } from './app/components/weatherComponents/openWeatherApiErrors';
+import { getWeather } from './app/requests/getWeather';
+import { getLocation } from './app/requests/getLocation';
 
 
 
@@ -19,30 +19,17 @@ const App = () => {
   const [weatherData, setWeatherData] = useState([]);
   const [IsReady, SetIsReady] = useState(false);
 
+
   useEffect(() => {
-    getWeather();
+    getWeatherData();
   }, [selectedCity]);
 
-  const getWeather = async () => {
-    const url = REACT_APP_API_ENDPOINT_WEATHER;
-    const key = REACT_APP_API_KEY_WEATHER;
-    const response = await fetch(`${url}weather?q=${selectedCity}&lang=ru&units=metric&appID=${key}`);
-    const result = await response.json();
 
-    if (result.cod === "404") {
-      setWeatherData([errorTexts[404]])
-    }
+  const getWeatherData = async () => {
+    const result = await getWeather(selectedCity);
 
-    else if (result.cod === "401") {
-      setWeatherData([errorTexts[401] + result.cod])
-    }
-
-    else if (result.cod === "429") {
-      setWeatherData([errorTexts[429] + result.cod])
-    }
-
-    else if (["500", "502", "503", "504"].indexOf(result.cod) != -1) {
-      setWeatherData([errorTexts[500] + result.cod])
+    if (errorTexts[result.cod]) {
+      setWeatherData([errorTexts[result.cod]])
     }
 
     else {
@@ -58,36 +45,29 @@ const App = () => {
         rain: result.clouds.all
       })
     }
-  };
+  }
 
+  // get fonts
   if (!IsReady) {
     return (
       <AppLoading
         startAsync={fonts}
         onFinish={() => SetIsReady(true)}
-        onError={() => {}}
+        onError={() => { }}
         onError={console.warn}
       />
     );
   }
 
-
-  const getLocation = async () => {
-
+  const location = async () => {
     //show loading display while get location
     setWeatherData([])
 
-    // get latitude and longitude
-    let locationData = await Location.getCurrentPositionAsync({});
+    // get location info
+    let cityName = await getLocation()
 
-    // get city
-    let regionName = await Location.reverseGeocodeAsync({
-      latitude: locationData.coords.latitude,
-      longitude: locationData.coords.longitude,
-    });
-
-    setCityInputText(regionName[0].city)
-    setSelectedCity(regionName[0].city)
+    setCityInputText(cityName)
+    setSelectedCity(cityName)
   }
 
   // entering text in the city input field
@@ -111,10 +91,10 @@ const App = () => {
 
   return (
     <View style={appStyles.container} onStartShouldSetResponder={() => changeSelectedCity()}>
-      <StatusBar hidden={false} backgroundColor="#6592be"/>
+      <StatusBar hidden={false} backgroundColor="#6592be" />
       <Menu city={cityInputText} onChangeInputText={onChangeInputText}
         changeTempState={changeTempState} isCelsius={isCelsius}
-        changeSelectedCity={changeSelectedCity} getLocation={getLocation} />
+        changeSelectedCity={changeSelectedCity} location={location} />
       <Weather data={weatherData} isCelsius={isCelsius} />
     </View>
   );

@@ -1,5 +1,4 @@
-import { useRef } from "react"
-import React from 'react'
+import React, { useRef } from 'react'
 import { Animated, View, Text } from "react-native";
 import { generalSt, menuSt, titleAndSwitchColor } from '../../stylesheets/styles';
 
