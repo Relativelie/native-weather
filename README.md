@@ -18,21 +18,21 @@
     <li>Open keyboard:
         <ul>
             <li>
-                <img src="./screenshots/keyboard.png" width="50%" height="50%"/>
+                <img src="./screenshots/keyboard.jpeg" width="50%" height="50%"/>
             </li>
         </ul>
     </li>
     <li>Location
         <ul>
             <li>
-                <img src="./screenshots/location.png" width="50%" height="50%"/>
+                <img src="./screenshots/location.jpeg" width="50%" height="50%"/>
             </li>
         </ul>
     </li>
         <li>Entering the wrong city
         <ul>
             <li>
-                <img src="./screenshots/uncorrect_city.png" width="50%" height="50%"/>
+                <img src="./screenshots/uncorrect_city.jpeg" width="50%" height="50%"/>
             </li>
         </ul>
     </li>
