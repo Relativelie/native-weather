@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 
-export const titleAndSwitchColor = "rgba(255, 255, 255, 0.472)";
-const fontFamilyNoto = "noto";
-const fontFamilyNotoBold = "notoBold";
+export const titleAndSwitchColor = "rgba(255, 255, 255, 0.6)";
+const fontFamilyNoto = "lato";
+const fontFamilyNotoBold = "latoBold";
 const mainValuesFontColor = "rgba(255, 255, 255, 1)";
 
 
@@ -38,7 +38,6 @@ export const menuSt = StyleSheet.create({
 
     cityAndSwitch: {
         flexDirection: "row",
-        justifyContent: "space-between",
         paddingHorizontal: 25,
         alignItems: "center",
     },
@@ -52,12 +51,14 @@ export const menuSt = StyleSheet.create({
 
     buttons: {
         flexDirection: "row",
-        justifyContent: "space-evenly",
+        justifyContent: "space-around",
+        alignItems: "center",
         marginTop: 10
     },
 
     location: {
-        flexDirection: "row"
+        flexDirection: "row",
+        alignItems: "center",
     },
 
     // switch component
@@ -67,13 +68,14 @@ export const menuSt = StyleSheet.create({
         borderColor: titleAndSwitchColor,
         borderWidth: 1,
         borderRadius: 7,
-        width: 70,
-        height: 27
+        width: 77,
+        height: 29
     },
 
     textBlockElem: {
         width: "50%",
-        alignItems: "center"
+        alignItems: "center",
+        paddingTop: 3
     },
 
     textSwitch: {
@@ -90,7 +92,7 @@ export const menuSt = StyleSheet.create({
 
     boldFont: {
         fontFamily: fontFamilyNotoBold,
-        fontWeight: "bold"
+        // fontWeight: "700"
     }
 });
 
@@ -119,7 +121,7 @@ export const weatherSt = StyleSheet.create({
     },
 
     tempText: {
-        fontSize: 70,
+        fontSize: 120,
         fontFamily: fontFamilyNoto,
         color: mainValuesFontColor
     },
@@ -129,9 +131,9 @@ export const weatherSt = StyleSheet.create({
     },
 
     descriptionText: {
-        fontSize: 20,
+        fontSize: 18,
+        color: mainValuesFontColor,
         fontFamily: fontFamilyNoto,
-        color: mainValuesFontColor
     },
 
     descriptionTextBold: {

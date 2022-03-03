@@ -2,8 +2,8 @@ import * as Font from 'expo-font';
 
 const fonts = () =>
   Font.loadAsync({
-    'notoBold': require('../../../assets/fonts/NotoSansDisplayBold.ttf'),
-    'noto': require('../../../assets/fonts/NotoSansDisplay.ttf'),
+    'latoBold': require('../../../assets/fonts/Lato-Bold.ttf'),
+    'lato': require('../../../assets/fonts/Lato-Regular.ttf'),
   });
 
   export default fonts

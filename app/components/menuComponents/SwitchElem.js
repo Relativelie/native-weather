@@ -8,7 +8,7 @@ const SwitchElem = ({changeTempState, isCelsius}) => {
 
     const animate_state = {
         start: 0,
-        end: 35
+        end: 38.5
     };
 
     const value = useRef(new Animated.Value(animate_state.start)).current;
