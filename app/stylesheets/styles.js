@@ -1,25 +1,29 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 
 export const titleAndSwitchColor = "rgba(255, 255, 255, 0.6)";
-const fontFamilyNoto = "lato";
-const fontFamilyNotoBold = "latoBold";
+const fontFamilyLato = "lato";
+const fontFamilyLatoBold = "latoBold";
+const fontFamilySans = "sans";
 const mainValuesFontColor = "rgba(255, 255, 255, 1)";
+const paddingForMenu = 18;
+const windowWidth = Dimensions.get("window").width/2 - 10;
+
 
 
 export const generalSt = StyleSheet.create({
 
     title: {
         fontSize: 15,
-        fontFamily: fontFamilyNoto,
+        fontFamily: fontFamilyLato,
         color: titleAndSwitchColor
     },
 
     serviceAnnouncement: {
         fontSize: 20,
-        fontFamily: fontFamilyNoto,
+        fontFamily: fontFamilyLato,
         color: titleAndSwitchColor,
-        textAlign: "center"
+        textAlign: "center",
     }
 });
 
@@ -28,32 +32,90 @@ export const appStyles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#6592be',
-        paddingTop: Platform.OS === "android" ? 0: 40
+        backgroundColor: '#7290B9',
+        paddingTop: Platform.OS === "android" ? 0 : 40
+    }, 
+
+    weatherValuesContainer: {
+        height: "100%",
+        justifyContent: "center"
     }
-    
 });
+
 
 export const menuSt = StyleSheet.create({
 
-    cityAndSwitch: {
+    general: {
         flexDirection: "row",
-        paddingHorizontal: 25,
-        alignItems: "center",
+        alignItems: "center"
     },
 
-    inputElem: {
+    container: {
+        position: "absolute",
+        width: "100%",
+        zIndex: 2,
+    },
+
+    // Input container in focus.
+    containerPadInput: {
+        paddingTop: Platform.OS === "android" ? 0 : 39,
+    },
+
+    cityInEditing: {
+        justifyContent: "center"
+    },
+
+    focusedInput: {
+        marginTop: 27,
+        backgroundColor: "#FFFFFF",
+        width: 332,
+        height: 53,
+        borderRadius: 4,
+        shadowColor: "rgb(0, 0, 0)",
+        shadowOpacity: 0.15,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 8,  
+        elevation: 8
+    },
+
+    inputElemInFocus: {
         flex: 1,
+        fontSize: 15,
+        color: "black",
+        height: "100%",
+        height: "100%",
+        zIndex: 2,
+        paddingLeft: paddingForMenu
+    },
+
+    cityInEditingBtn: {
+        fontSize: 15,
+        fontFamily: fontFamilyLato,
+        color: "#1086FF",
+        paddingRight: paddingForMenu
+    },
+
+    // Input is not in focus.
+    containerPad: {
+        paddingTop: Platform.OS === "android" ? 19 : 49,
+    },
+
+    cityAndSwitch: {
+        justifyContent: "space-between",
+        paddingHorizontal: paddingForMenu
+    },
+
+    cityText: {
+        width: 193,
         fontSize: 30,
-        fontFamily: fontFamilyNoto,
+        fontFamily: fontFamilyLato,
         color: mainValuesFontColor
     },
 
     buttons: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-        marginTop: 10
+        justifyContent: "space-between",
+        marginTop: 10,
+        paddingHorizontal: paddingForMenu
     },
 
     location: {
@@ -82,19 +144,26 @@ export const menuSt = StyleSheet.create({
         fontSize: 18,
         color: titleAndSwitchColor,
         width: "100%",
-        height: "100%", 
+        height: "100%",
         textAlign: "center"
-    }, 
+    },
+
+    textDegree: {
+        paddingRight: 10,
+        fontSize: 18,
+        color: titleAndSwitchColor,
+        fontFamily: fontFamilySans
+    },
 
     commonFont: {
-        fontFamily: fontFamilyNoto,
+        fontFamily: fontFamilyLato,
     },
 
     boldFont: {
-        fontFamily: fontFamilyNotoBold,
-        // fontWeight: "700"
+        fontFamily: fontFamilyLatoBold
     }
 });
+
 
 export const weatherSt = StyleSheet.create({
 
@@ -104,13 +173,13 @@ export const weatherSt = StyleSheet.create({
 
     temp: {
         flex: 3,
+        paddingTop: 50,
         justifyContent: "center",
         alignItems: "center"
     },
 
     tempElem: {
         flexDirection: "row",
-        justifyContent: "center",
         alignItems: "center"
     },
 
@@ -122,7 +191,7 @@ export const weatherSt = StyleSheet.create({
 
     tempText: {
         fontSize: 120,
-        fontFamily: fontFamilyNoto,
+        fontFamily: fontFamilySans,
         color: mainValuesFontColor
     },
 
@@ -133,11 +202,12 @@ export const weatherSt = StyleSheet.create({
     descriptionText: {
         fontSize: 18,
         color: mainValuesFontColor,
-        fontFamily: fontFamilyNoto,
+        fontFamily: fontFamilyLato,
+        maxWidth: windowWidth
     },
 
     descriptionTextBold: {
-        fontFamily: fontFamilyNotoBold,
+        fontFamily: fontFamilyLatoBold,
         fontWeight: "bold"
     },
 

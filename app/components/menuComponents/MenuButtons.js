@@ -6,14 +6,14 @@ const MenuButtons = ({ inputFocus, location }) => {
 
 
     return (
-        <View style={menuSt.buttons}>
+        <View style={[menuSt.buttons, menuSt.general]}>
             <Text style={generalSt.title} onPress={() => inputFocus()}>Сменить город</Text>
             <View style={menuSt.location}>
                 <Image source={require('../../../assets/location.webp')} />
                 <Text style={generalSt.title} onPress={() => location()}>Мое местоположение</Text>
             </View>
         </View>
-    )
+    );
 }
 
 

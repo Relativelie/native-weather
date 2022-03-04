@@ -6,39 +6,34 @@ import LoadingProcess from "./weatherComponents/LoadingProcess";
 
 
 const Weather = (props) => {
-
     const [isLoading, setIsLoading] = useState(false);
 
 
     // Loading value from api.
     useEffect(() => {
-        if (props.data.length === 0) {
-            setIsLoading(true);
-        }
-        else {
-            setIsLoading(false);
-        }
-    })
+        props.data.length === 0 ? setIsLoading(true) : setIsLoading(false);
+    });
+
 
     // Displayed components.
     const displayedValue = () => {
-        if (isLoading) {
-            return <LoadingProcess />
-        }
-        
+        if (isLoading) return <LoadingProcess />;
+
         else {
             if (Array.isArray(props.data)) {
                 return <DisplayedErrorData data={props.data} />
             }
             else return (
-                <DisplayedSuccessfulData data={props.data} isCelsius={props.isCelsius}/>
-            )
-        }
-    }
+                <DisplayedSuccessfulData
+                    data={props.data}
+                    isCelsius={props.isCelsius}
+                />
+            );
+        };
+    };
 
-    return (
-        displayedValue()
-    )
+
+    return displayedValue();
 }
 
 

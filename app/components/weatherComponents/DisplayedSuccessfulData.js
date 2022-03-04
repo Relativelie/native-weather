@@ -1,5 +1,7 @@
 import { View, Text, ImageBackground } from "react-native";
-import { weatherSt, generalSt } from '../../stylesheets/styles';
+
+import { weatherSt } from '../../stylesheets/styles';
+import { WeatherDetails } from "./WeatherDetails";
 
 
 const DisplayedSuccessfulData = (props) => {
@@ -7,8 +9,10 @@ const DisplayedSuccessfulData = (props) => {
     // Convert to wind direction.
     const convertWindValue = (value) => {
         if (!isNaN(value)) {
-            const windtDerictions = ["северный", "северо-восточный", "восточный", "юго-восточный", "южный",
-                "юго-западный", "западный", "северо-западный", "северный"];
+            const windtDerictions = [
+                "северный", "северо-восточный", "восточный", "юго-восточный", "южный",
+                "юго-западный", "западный", "северо-западный", "северный"
+            ];
 
             // Limit wind direction to 360 degrees.
             let intValue = Math.floor(value / 360);
@@ -16,15 +20,14 @@ const DisplayedSuccessfulData = (props) => {
 
             // Matching up with the wind array.
             let directionIndex = Math.round(floatValue / 45) + intValue;
-            return windtDerictions[directionIndex - 1]
+            return windtDerictions[directionIndex - 1];
         }
-    }
+    };
 
-    // Convert temp to fahrenheit.
     const convertTempValue = (value) => {
-        let temp = props.isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}F`;
-        return temp
-    }
+        let temp = props.isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}°`;
+        return temp;
+    };
 
 
     return (
@@ -47,42 +50,32 @@ const DisplayedSuccessfulData = (props) => {
             <View style={weatherSt.otherValues}>
 
                 <View style={weatherSt.otherValuesElem}>
-                    <View>
-                        <Text style={generalSt.title}>Ветер</Text>
-                        <Text style={weatherSt.descriptionText}>
-                            <Text style={weatherSt.descriptionTextBold}>{props.data.windSpeed} </Text>
-                            м/с, {convertWindValue(props.data.windDeg)}
-                        </Text>
-                    </View>
-                    <View>
-                        <Text style={generalSt.title}>Влажность</Text>
-                        <Text style={weatherSt.descriptionText}>
-                            <Text style={weatherSt.descriptionTextBold}>{props.data.humidity} </Text>
-                            %
-                        </Text>
-                    </View>
+                    <WeatherDetails
+                        typeOfWeather={["Ветер", "м/с"]}
+                        mainValue={props.data.windSpeed}
+                        clarificationValue={convertWindValue(props.data.windDeg)}
+                    />
+                    <WeatherDetails
+                        typeOfWeather={["Влажность", "%"]}
+                        mainValue={props.data.humidity}
+                        clarificationValue={null} />
                 </View>
 
                 <View style={weatherSt.otherValuesElem}>
-                    <View>
-                        <Text style={generalSt.title}>Давление</Text>
-                        <Text style={weatherSt.descriptionText}>
-                            <Text style={weatherSt.descriptionTextBold}>{(props.data.pressure * 0.75).toFixed(0)} </Text>
-                            мм рт.ст
-                        </Text>
-                    </View>
-                    <View>
-                        <Text style={generalSt.title}>Вероятность дождя</Text>
-                        <Text style={weatherSt.descriptionText}>
-                            <Text style={weatherSt.descriptionTextBold}>{props.data.rain} </Text>
-                            %
-                        </Text>
-                    </View>
+                    <WeatherDetails
+                        typeOfWeather={["Давление", "мм рт.ст"]}
+                        mainValue={(props.data.pressure * 0.75).toFixed(0)}
+                        clarificationValue={null} />
+                    <WeatherDetails
+                        typeOfWeather={["Вероятность дождя", "%"]}
+                        mainValue={props.data.rain}
+                        clarificationValue={null} />
                 </View>
 
             </View>
         </View>
-    )
+    );
 }
 
-export default DisplayedSuccessfulData
+
+export default DisplayedSuccessfulData;

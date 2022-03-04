@@ -36,4 +36,12 @@
             </li>
         </ul>
     </li>
+        </li>
+        <li>Loading process
+        <ul>
+            <li>
+                <img src="./screenshots/loading.jpeg" width="50%" height="50%"/>
+            </li>
+        </ul>
+    </li>
 </ol>

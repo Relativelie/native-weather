@@ -8,7 +8,7 @@ const LoadingProcess = () => {
         <View>
             <Text style={generalSt.serviceAnnouncement}>Loading...</Text>
         </View>
-    )
+    );
 }
 
 

@@ -8,7 +8,7 @@ const DisplayedErrorData = ({data}) => {
         <View>
             <Text style={generalSt.serviceAnnouncement}>{data[0]}</Text>
         </View>
-    )
+    );
 }
 
 
