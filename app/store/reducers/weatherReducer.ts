@@ -1,5 +1,11 @@
-import { weatherState } from "../../types/weatherTypes";
+import { weatherState, WeatherAction } from "../../types/weatherTypes";
 
 const initialState: weatherState = {
-    isLoading: false
+    weatherData: []
+}
+
+export const weatherReducer = (state = initialState, action: WeatherAction): weatherState = {
+    switch (action.type) {
+        
+    }
 }

@@ -17,7 +17,7 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
         case MenuActionTypes.INPUT_ON_FOCUS:
             return {
                 ...state,
-                isInputFocus: true
+                isInputFocus: action.payload
             }
 
         case MenuActionTypes.TEMP_CONVERSION:

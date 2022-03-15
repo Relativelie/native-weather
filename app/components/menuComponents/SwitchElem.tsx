@@ -1,10 +1,17 @@
 import React, { useRef } from 'react'
+import { FC } from 'react';
 import { Animated, View, Text } from "react-native";
 
 import { menuSt, titleAndSwitchColor } from '../../stylesheets/styles';
+import { useActions } from '../hooks/useActions';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 
-const SwitchElem = ({ changeTempState, isCelsius }) => {
+const SwitchElem:FC = () => {
+
+
+    const { isCelsius } = useTypedSelector(state => state.menu);
+    const { tempConversion } = useActions();
 
     const animate_state = {
         start: 0,
@@ -14,7 +21,7 @@ const SwitchElem = ({ changeTempState, isCelsius }) => {
     const value = useRef(new Animated.Value(animate_state.start)).current;
 
     const startAnimate = () => {
-        changeTempState()
+        tempConversion()
         Animated.timing(value, { toValue: !isCelsius ? animate_state.start : animate_state.end, useNativeDriver: false, duration: 300 }).start();
     };
 

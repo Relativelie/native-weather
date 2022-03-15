@@ -33,7 +33,7 @@ export const appStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#7290B9',
-        paddingTop: Platform.OS === "android" ? 0 : 40
+        // paddingTop: Platform.OS === "android" ? 0 : 40
     }, 
 
     weatherValuesContainer: {
@@ -58,7 +58,7 @@ export const menuSt = StyleSheet.create({
 
     // Input container in focus.
     containerPadInput: {
-        paddingTop: Platform.OS === "android" ? 0 : 39,
+        // paddingTop: Platform.OS === "android" ? 0 : 39,
     },
 
     cityInEditing: {
@@ -83,7 +83,6 @@ export const menuSt = StyleSheet.create({
         fontSize: 15,
         color: "black",
         height: "100%",
-        height: "100%",
         zIndex: 2,
         paddingLeft: paddingForMenu
     },
@@ -97,7 +96,7 @@ export const menuSt = StyleSheet.create({
 
     // Input is not in focus.
     containerPad: {
-        paddingTop: Platform.OS === "android" ? 19 : 49,
+        // paddingTop: Platform.OS === "android" ? 19 : 49,
     },
 
     cityAndSwitch: {

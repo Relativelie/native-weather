@@ -25,7 +25,8 @@ interface TextInputAction {
 }
 
 interface InputOnFocusAction {
-    type: MenuActionTypes.INPUT_ON_FOCUS
+    type: MenuActionTypes.INPUT_ON_FOCUS,
+    payload: boolean
 }
 
 interface SelectingCityAction {

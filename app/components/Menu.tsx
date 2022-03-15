@@ -5,39 +5,29 @@ import SwitchElem from './menuComponents/SwitchElem';
 import MenuButtons from './menuComponents/MenuButtons';
 import CityText from './menuComponents/CityText';
 import CityInputInFocus from './menuComponents/CityInputInFocus';
+import { useTypedSelector } from './hooks/useTypedSelector';
+import { FC } from 'react';
 
 
-const Menu = () => {
+const Menu: FC = () => {
 
-  const {}
+  const { cityInputText, isInputFocus } = useTypedSelector(state => state.menu);
 
-  // Input is in focus when pressing on "change city".
-  const inputFocus = () => {
-    props.inputFieldOnFocus();
-  };
-  
 
-  if (!props.isInputFocus) {
+  if (!isInputFocus) {
     return (
       <View style={[menuSt.container, menuSt.containerPad]}>
         <View style={[menuSt.cityAndSwitch, menuSt.general]}>
 
+
           <CityText
-            style={menuSt.inputOutOfFocus}
-            city={}
+            a={cityInputText}
           />
-
-          {/* <SwitchElem
-            changeTempState={props.changeTempState}
-            isCelsius={props.isCelsius}
-          /> */}
-
         </View>
 
-        {/* <MenuButtons
-          inputFocus={inputFocus}
-          location={props.location}
-        /> */}
+        <SwitchElem/>
+
+        <MenuButtons/>
       </View>
     );
   }
@@ -47,11 +37,7 @@ const Menu = () => {
       <View style={[menuSt.container, menuSt.containerPadInput]}>
         <View style={[menuSt.cityInEditing, menuSt.general]}>
 
-          <CityInputInFocus
-            city={props.city}
-            onChangeInputText={props.onChangeInputText}
-            changeSelectedCity={props.changeSelectedCity}
-          />
+          <CityInputInFocus />
 
         </View>
       </View>

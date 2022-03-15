@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { useEffect, useState } from "react";
 
 import DisplayedErrorData from "./weatherComponents/DisplayedErrorData";
@@ -5,7 +6,7 @@ import DisplayedSuccessfulData from "./weatherComponents/DisplayedSuccessfulData
 import LoadingProcess from "./weatherComponents/LoadingProcess";
 
 
-const Weather = (props) => {
+const Weather:FC = () => {
     const [isLoading, setIsLoading] = useState(false);
 
 

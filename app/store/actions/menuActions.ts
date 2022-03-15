@@ -10,8 +10,9 @@ export const textInputAction = (e: string): MenuAction => ({
     payload: e
 });
 
-export const inputOnFocus = (): MenuAction => ({
-    type: MenuActionTypes.INPUT_ON_FOCUS
+export const inputOnFocus = (value: boolean): MenuAction => ({
+    type: MenuActionTypes.INPUT_ON_FOCUS,
+    payload: value
 });
 
 export const selectingCity = (): MenuAction => ({
