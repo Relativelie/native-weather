@@ -7,8 +7,9 @@ import CityText from './menuComponents/CityText';
 import CityInputInFocus from './menuComponents/CityInputInFocus';
 
 
-const Menu = (props) => {
+const Menu = () => {
 
+  const {}
 
   // Input is in focus when pressing on "change city".
   const inputFocus = () => {
@@ -23,20 +24,20 @@ const Menu = (props) => {
 
           <CityText
             style={menuSt.inputOutOfFocus}
-            city={props.city}
+            city={}
           />
 
-          <SwitchElem
+          {/* <SwitchElem
             changeTempState={props.changeTempState}
             isCelsius={props.isCelsius}
-          />
+          /> */}
 
         </View>
 
-        <MenuButtons
+        {/* <MenuButtons
           inputFocus={inputFocus}
           location={props.location}
-        />
+        /> */}
       </View>
     );
   }

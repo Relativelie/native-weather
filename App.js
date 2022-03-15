@@ -113,14 +113,14 @@ const App = () => {
         setTranslucent={true}
       />
       <Menu
-        city={cityInputText}
-        onChangeInputText={onChangeInputText}
-        changeTempState={changeTempState}
-        isCelsius={isCelsius}
-        changeSelectedCity={changeSelectedCity}
-        location={location}
-        isInputFocus={isInputFocus}
-        inputFieldOnFocus={inputFieldOnFocus}
+        // city={cityInputText}
+        // onChangeInputText={onChangeInputText}
+        // changeTempState={changeTempState}
+        // isCelsius={isCelsius}
+        // changeSelectedCity={changeSelectedCity}
+        // location={location}
+        // isInputFocus={isInputFocus}
+        // inputFieldOnFocus={inputFieldOnFocus}
       />
       <View style={appStyles.weatherValuesContainer}>
         {isLoadingLocation ? <LoadingProcess /> :

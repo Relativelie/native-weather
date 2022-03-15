@@ -2,8 +2,7 @@ import { Text, View } from "react-native";
 import { menuSt } from '../../stylesheets/styles';
 
 
-
-const CityText = ({ city }) => {
+const CityText = ( city ) => {
 
     return (
         <View>
