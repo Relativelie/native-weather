@@ -12,7 +12,8 @@ export enum MenuActionTypes {
     INPUT_ON_FOCUS = "INPUT_ON_FOCUS",
     SELECTING_CITY = "SELECTING_CITY",
     LOCATE = "LOCATE",
-    LOADING = "LOADING"
+    LOADING = "LOADING",
+    SELECT_ANOTHER_CITY = "SELECT_ANOTHER_CITY"
 }
 
 interface TempConversionAction {
@@ -31,6 +32,10 @@ interface InputOnFocusAction {
 
 interface SelectingCityAction {
     type: MenuActionTypes.SELECTING_CITY,
+}
+
+interface SelectAnotherCity {
+    type: MenuActionTypes.SELECT_ANOTHER_CITY
 }
 
 interface Locate {

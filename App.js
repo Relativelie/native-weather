@@ -8,14 +8,27 @@ import Weather from './app/components/Weather';
 import { useState } from "react";
 import AppLoading from 'expo-app-loading';
 import fonts from "./app/components/hooks/useFonts"
+import { useActions } from "./app/components/hooks/useActions"
+import MainComponent from "./app/components/MainComponent"
 
 
 
 const App = () => {
 
-      const [IsFontReady, SetIsFontReady] = useState(false);
+  const [IsFontReady, SetIsFontReady] = useState(false);
+//   const { textInputAction, selectingCity, inputOnFocus } = useActions()
 
-//   Get fonts.
+
+
+//   const selectAnotherCity = () => {
+//     console.log("input text:", cityInputText, "selected city:", selectedCity)
+//     selectingCity();
+//     Keyboard.dismiss();
+//     console.log("input text:", cityInputText, "selected city:", selectedCity)
+//     inputOnFocus(false)
+// }
+
+  //   Get fonts.
   if (!IsFontReady) {
     return (
       <AppLoading
@@ -26,25 +39,25 @@ const App = () => {
     );
   };
 
-    return (
-        <Provider store={storeT}>
+  return (
+    <Provider store={storeT}>
 
+<MainComponent/>
+      {/* <View style={appStyles.container} onStartShouldSetResponder={() => selectAnotherCity()}>
+        <StatusBar
+          hidden={false}
+          backgroundColor="#7290B9"
+          barStyle={"light-content"}
+          translucent={true} />
+        <Menu />
+        <View style={appStyles.weatherValuesContainer}>
 
-            <View style={appStyles.container}>
-                <StatusBar
-                    hidden={false}
-                    backgroundColor="#7290B9"
-                    barStyle={"light-content"}
-                    translucent={true} />
-                <Menu />
-                <View style={appStyles.weatherValuesContainer}>
+          <Weather />
+        </View>
+      </View> */}
+    </Provider>
 
-                    <Weather />
-                </View>
-            </View>
-        </Provider>
-
-    )
+  )
 }
 
 export default App

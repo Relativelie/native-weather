@@ -9,7 +9,12 @@ import { useTypedSelector } from './hooks/useTypedSelector';
 import { FC } from 'react';
 
 
-const Menu: FC = () => {
+interface Props {
+  selectAnotherCity: any
+}
+
+
+const Menu: FC<Props> = ({selectAnotherCity}) => {
 
   const { cityInputText, isInputFocus } = useTypedSelector(state => state.menu);
   
@@ -28,7 +33,7 @@ const Menu: FC = () => {
 
         <SwitchElem/>
 
-        <MenuButtons/>
+        <MenuButtons />
       </View>
     );
   }
@@ -38,7 +43,7 @@ const Menu: FC = () => {
       <View style={[menuSt.container, menuSt.containerPadInput]}>
         <View style={[menuSt.cityInEditing, menuSt.general]}>
 
-          <CityInputInFocus />
+          <CityInputInFocus selectAnotherCity={selectAnotherCity}/>
 
         </View>
       </View>

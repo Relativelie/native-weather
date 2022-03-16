@@ -63,9 +63,6 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
                 cityInputText: action.payload
             }
 
-
-
-
         default:
             return state
     }

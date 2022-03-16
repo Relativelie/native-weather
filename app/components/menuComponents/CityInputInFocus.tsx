@@ -5,18 +5,16 @@ import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
 
-
-const CityInputInFocus:FC = () => {
-    const { isCelsius, cityInputText, selectedCity, isInputFocus } = useTypedSelector(state => state.menu);
-const { textInputAction, selectingCity, inputOnFocus } = useActions()
-
-const selectAnotherCity = () => {
-    console.log("input text:", cityInputText, "selected city:", selectedCity)
-    selectingCity();
-    Keyboard.dismiss();
-    console.log("input text:", cityInputText, "selected city:", selectedCity)
-    inputOnFocus(false)
+interface Props {
+    selectAnotherCity: any
 }
+
+
+const CityInputInFocus:FC<Props> = ({selectAnotherCity}) => {
+    const { isCelsius, cityInputText, selectedCity, isInputFocus } = useTypedSelector(state => state.menu);
+    const { textInputAction, selectingCity, inputOnFocus } = useActions()
+
+
 
 
     return (
