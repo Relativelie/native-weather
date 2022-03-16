@@ -1,5 +1,5 @@
 export interface weatherState {
-    weatherData: Array<string> | Array<any>
+    weatherData:  Array<any> | object
 }
 
 export enum WeatherActionTypes {
@@ -8,7 +8,7 @@ export enum WeatherActionTypes {
 
 interface GetDataAction {
     type: WeatherActionTypes.GET_DATA,
-    payload: Array<string> | Array<any> | string | object
+    payload: Array<any> | object
 }
 
 

@@ -10,9 +10,14 @@ import { errorTexts } from './app/components/weatherComponents/openWeatherApiErr
 import { getWeather } from './app/requests/getWeather';
 import { getLocation } from './app/requests/getLocation';
 import LoadingProcess from './app/components/weatherComponents/LoadingProcess';
-import { Provider } from 'react-redux';
-import { store } from "./app/store";
+
 import { useTypedSelector } from './app/components/hooks/useTypedSelector';
+import { Provider } from 'react-redux';
+import { storeT } from './app/store/index';
+import { configureStore, createStore } from '@reduxjs/toolkit';
+import { rootReducer } from './app/store/reducers';
+import { menuReducer } from './app/store/reducers/menuReducer';
+
 
 
 
@@ -108,29 +113,33 @@ const App = () => {
   // };
 
 
-  return (
-    <Provider store={store}>
 
-{/* <View style={appStyles.container} onStartShouldSetResponder={() => changeSelectedCity()}> */}
+  return (
+    // <Provider store={store}>
+<Provider store={storeT}>
+    <View>
+
+      {/* <View style={appStyles.container} onStartShouldSetResponder={() => changeSelectedCity()}>
       <View style={appStyles.container}>
 
-      <StatusBar
-        hidden={false}
-        backgroundColor="#7290B9"
-        barStyle={"light-content"}
-        translucent={true}
-      />
-            <Menu />
-      
-      <View style={appStyles.weatherValuesContainer}>
-        {isLoading ? <LoadingProcess /> :
-          <Weather />
-        }
-      </View>
+        <StatusBar
+          hidden={false}
+          backgroundColor="#7290B9"
+          barStyle={"light-content"}
+          translucent={true}
+        />
+        <Menu /> */}
 
+        <View style={appStyles.weatherValuesContainer}>
+          {isLoading ? <LoadingProcess /> :
+            <Weather />
+          }
+        </View>
+
+      {/* </View> */}
     </View>
     </Provider>
   );
 };
 
-export default App;
+// export default App;

@@ -1,13 +1,20 @@
+import { FC } from "react";
 import { View, Text, ImageBackground } from "react-native";
 
 import { weatherSt } from '../../stylesheets/styles';
+import { useActions } from "../hooks/useActions";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import { WeatherDetails } from "./WeatherDetails";
 
 
-const DisplayedSuccessfulData = (props) => {
+const DisplayedSuccessfulData:FC = () => {
+
+    const { weatherData } = useTypedSelector(state => state.weather);
+    const { isLoading, isCelsius } = useTypedSelector(state => state.menu);
+    const { inputOnFocus, locate, loading } = useActions();
 
     // Convert to wind direction.
-    const convertWindValue = (value) => {
+    const convertWindValue = (value: number) => {
         if (!isNaN(value)) {
             const windtDerictions = [
                 "северный", "северо-восточный", "восточный", "юго-восточный", "южный",
@@ -24,10 +31,11 @@ const DisplayedSuccessfulData = (props) => {
         }
     };
 
-    const convertTempValue = (value) => {
-        let temp = props.isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}°`;
+    const convertTempValue = (value: number) => {
+        let temp = isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}°`;
         return temp;
     };
+    console.log(weatherData);
 
 
     return (
@@ -37,13 +45,13 @@ const DisplayedSuccessfulData = (props) => {
             <View style={weatherSt.temp}>
                 <View style={weatherSt.tempElem}>
                     <View style={weatherSt.imgContainer}>
-                        <ImageBackground style={weatherSt.descriptionImage} source={{ uri: props.data.icon }} />
+                        <ImageBackground style={weatherSt.descriptionImage} source={{ uri: weatherData[0].icon }} />
                     </View>
-                    <Text style={weatherSt.tempText}>{convertTempValue(props.data.temp)}</Text>
+                    <Text style={weatherSt.tempText}>{convertTempValue(weatherData[0].temp)}</Text>
                 </View>
 
                 <View style={weatherSt.description}>
-                    <Text style={weatherSt.descriptionText}>{props.data.description}</Text>
+                    <Text style={weatherSt.descriptionText}>{weatherData[0].description}</Text>
                 </View>
             </View>
 
@@ -52,23 +60,23 @@ const DisplayedSuccessfulData = (props) => {
                 <View style={weatherSt.otherValuesElem}>
                     <WeatherDetails
                         typeOfWeather={["Ветер", "м/с"]}
-                        mainValue={props.data.windSpeed}
-                        clarificationValue={convertWindValue(props.data.windDeg)}
+                        mainValue={weatherData[0].windSpeed}
+                        clarificationValue={convertWindValue(weatherData[0].windDeg)}
                     />
                     <WeatherDetails
                         typeOfWeather={["Влажность", "%"]}
-                        mainValue={props.data.humidity}
+                        mainValue={weatherData[0].humidity}
                         clarificationValue={null} />
                 </View>
 
                 <View style={weatherSt.otherValuesElem}>
                     <WeatherDetails
                         typeOfWeather={["Давление", "мм рт.ст"]}
-                        mainValue={(props.data.pressure * 0.75).toFixed(0)}
+                        mainValue={(weatherData[0].pressure * 0.75).toFixed(0)}
                         clarificationValue={null} />
                     <WeatherDetails
                         typeOfWeather={["Вероятность дождя", "%"]}
-                        mainValue={props.data.rain}
+                        mainValue={weatherData[0].rain}
                         clarificationValue={null} />
                 </View>
 

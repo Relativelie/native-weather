@@ -12,6 +12,7 @@ import { FC } from 'react';
 const Menu: FC = () => {
 
   const { cityInputText, isInputFocus } = useTypedSelector(state => state.menu);
+  
 
 
   if (!isInputFocus) {

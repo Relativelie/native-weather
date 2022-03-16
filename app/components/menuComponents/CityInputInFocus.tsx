@@ -11,9 +11,10 @@ const CityInputInFocus:FC = () => {
 const { textInputAction, selectingCity, inputOnFocus } = useActions()
 
 const selectAnotherCity = () => {
+    console.log("input text:", cityInputText, "selected city:", selectedCity)
     selectingCity();
     Keyboard.dismiss();
-
+    console.log("input text:", cityInputText, "selected city:", selectedCity)
     inputOnFocus(false)
 }
 

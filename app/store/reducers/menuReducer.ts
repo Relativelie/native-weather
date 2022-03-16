@@ -23,23 +23,27 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
         case MenuActionTypes.TEMP_CONVERSION:
             return {
                 ...state,
-                isCelsius: !initialState.isCelsius
+                isCelsius: !state.isCelsius
             }
 
         case MenuActionTypes.TEXT_INPUT:
+
             return {
                 ...state,
                 cityInputText: action.payload
             }
 
         case MenuActionTypes.SELECTING_CITY:
+
             let city: string;
-            if (initialState.cityInputText !== initialState.selectedCity) {
-                city = initialState.cityInputText
+            if (state.cityInputText !== state.selectedCity) {
+                city = state.cityInputText
             }
-            else if (initialState.cityInputText === "") {
-                city = initialState.selectedCity
+            else if (state.cityInputText === "") {
+                city = state.selectedCity
             }
+
+
             return {
                 ...state,
                 selectedCity: city,
@@ -49,7 +53,7 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
         case MenuActionTypes.LOADING:
             return {
                 ...state,
-                isLoading: !initialState.isLoading
+                isLoading: action.payload
             }
 
         case MenuActionTypes.LOCATE:

@@ -14,10 +14,10 @@ const MenuButtons: FC = () => {
 
     const location = async () => {
         //Show loading display while get location.
-        loading();
+        loading(true);
         // Get location info.
         let cityName = await getLocation();
-        loading();
+        loading(false);
         if (!cityName?.error) {
             locate(cityName.city);
         }

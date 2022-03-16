@@ -39,7 +39,8 @@ interface Locate {
 }
 
 interface Loading {
-    type: MenuActionTypes.LOADING
+    type: MenuActionTypes.LOADING,
+    payload: boolean
 }
 
 

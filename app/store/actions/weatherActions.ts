@@ -6,16 +6,17 @@ import { WeatherAction, WeatherActionTypes } from "../../types/weatherTypes";
 export const getWeatherData = (city: string) => {
     return async (dispatch: Dispatch<WeatherAction>) => {
         const result = await getWeather(city);
+        console.log("getget")
         if (errorTexts[result.cod]) {
             dispatch({
                 type: WeatherActionTypes.GET_DATA,
-                payload: errorTexts[result.cod]
+                payload: [errorTexts[result.cod], result.cod]
             })
         }
         else {
             dispatch({
                 type: WeatherActionTypes.GET_DATA,
-                payload: {
+                payload: [{
                     temp: result.main.temp,
                     icon: `https://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png`,
                     description: result.weather[0]?.description[0].toUpperCase() +
@@ -25,7 +26,7 @@ export const getWeatherData = (city: string) => {
                     pressure: result.main.pressure,
                     humidity: result.main.humidity,
                     rain: result.clouds.all
-                }
+                }]
             });
         };
     }
