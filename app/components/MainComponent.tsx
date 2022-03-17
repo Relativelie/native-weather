@@ -1,4 +1,5 @@
 import { Keyboard, StatusBar, View } from "react-native"
+
 import Menu from "./Menu"
 import Weather from './Weather';
 import { appStyles } from "../stylesheets/styles";
@@ -20,7 +21,7 @@ const MainComponent = () => {
 
 
     return (
-        <View style={appStyles.container} onStartShouldSetResponder={() => selectAnotherCity()}>
+        <View style={appStyles.container} onStartShouldSetResponder={() => true} onResponderRelease={() => selectAnotherCity()}>
 
             <StatusBar
                 hidden={false}

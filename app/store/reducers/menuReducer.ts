@@ -1,14 +1,12 @@
-import { Dispatch } from "redux";
-import { getLocation } from "../../requests/getLocation";
 import { MenuAction, MenuActionTypes, MenuState } from "../../types/menuTypes"
-import { loading } from "../actions/menuActions";
+import { usedTextsMenu } from "../../usedTexts/usedTextsMenu";
 
 
 const initialState: MenuState = {
     isCelsius: true,
-    cityInputText: "Омск",
+    cityInputText: usedTextsMenu.establishedCity,
     isInputFocus: false,
-    selectedCity: "Омск",
+    selectedCity: usedTextsMenu.establishedCity,
     isLoading: false
 }
 

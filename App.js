@@ -1,32 +1,15 @@
-import { StatusBar, Text, View } from "react-native"
-import { Provider, useSelector } from "react-redux"
-import { useTypedSelector } from "./app/hooks/useTypedSelector"
-import Menu from "./app/components/Menu"
-import { storeT } from "./app/store"
-import { appStyles } from "./app/stylesheets/styles"
-import Weather from './app/components/Weather';
+import { Provider } from "react-redux";
 import { useState } from "react";
 import AppLoading from 'expo-app-loading';
-import fonts from "./app/hooks/useFonts"
-import { useActions } from "./app/hooks/useActions"
-import MainComponent from "./app/components/MainComponent"
 
+import { store } from "./app/store";
+import fonts from "./app/hooks/useFonts";
+import MainComponent from "./app/components/MainComponent";
 
 
 const App = () => {
-
   const [IsFontReady, SetIsFontReady] = useState(false);
-//   const { textInputAction, selectingCity, inputOnFocus } = useActions()
 
-
-
-//   const selectAnotherCity = () => {
-//     console.log("input text:", cityInputText, "selected city:", selectedCity)
-//     selectingCity();
-//     Keyboard.dismiss();
-//     console.log("input text:", cityInputText, "selected city:", selectedCity)
-//     inputOnFocus(false)
-// }
 
   //   Get fonts.
   if (!IsFontReady) {
@@ -40,24 +23,11 @@ const App = () => {
   };
 
   return (
-    <Provider store={storeT}>
-
-<MainComponent/>
-      {/* <View style={appStyles.container} onStartShouldSetResponder={() => selectAnotherCity()}>
-        <StatusBar
-          hidden={false}
-          backgroundColor="#7290B9"
-          barStyle={"light-content"}
-          translucent={true} />
-        <Menu />
-        <View style={appStyles.weatherValuesContainer}>
-
-          <Weather />
-        </View>
-      </View> */}
+    <Provider store={store}>
+      <MainComponent />
     </Provider>
-
   )
-}
+};
+
 
 export default App

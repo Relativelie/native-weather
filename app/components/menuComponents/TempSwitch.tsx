@@ -5,6 +5,7 @@ import { Animated, View, Text } from "react-native";
 import { menuSt, titleAndSwitchColor } from '../../stylesheets/styles';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { usedTextsMenu } from '../../usedTexts/usedTextsMenu';
 
 
 const TempSwitch: FC = () => {
@@ -33,7 +34,7 @@ const TempSwitch: FC = () => {
                     <Text
                         style={[menuSt.textSwitch, !isCelsius ? menuSt.commonFont : menuSt.boldFont]}
                         onPress={() => startAnimate()}>
-                        C
+                        {usedTextsMenu.switchCelsius}
                     </Text>
                 </View>
 
@@ -41,7 +42,7 @@ const TempSwitch: FC = () => {
                     <Text
                         style={[menuSt.textSwitch, isCelsius ? menuSt.commonFont : menuSt.boldFont]}
                         onPress={() => startAnimate()}>
-                        F
+                        {usedTextsMenu.switchFahrenheit}
                     </Text>
                 </View>
 

@@ -1,13 +1,12 @@
 import { FC } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Button } from "react-native";
 
 import { getLocation } from "../../requests/getLocation";
 import { generalSt, menuSt } from '../../stylesheets/styles';
 import { useActions } from "../../hooks/useActions";
-import { usedTextsMenu } from "../../usedTexts/usedTextsMenu";
 
 
-const MenuOptions: FC = () => {
+const MenuButtons: FC = () => {
     const { inputOnFocus, locate, loading, bringLocationError } = useActions();
 
     const location = async () => {
@@ -16,27 +15,28 @@ const MenuOptions: FC = () => {
         // Get location info.
         let cityName = await getLocation();
         loading(false);
-
+        console.log(cityName)
         if (!cityName?.error) {
             locate(cityName.city);
-            bringLocationError(false);
+            bringLocationError(false)
         }
         else {
-            bringLocationError(true);
+            bringLocationError(true)
         }
     };
 
 
     return (
+
         <View style={[menuSt.buttons, menuSt.general]}>
-            <Text style={generalSt.title} onPress={() => inputOnFocus(true)}>{usedTextsMenu.optionsChangeCity}</Text>
+            <Text style={generalSt.title} onPress={() => inputOnFocus(true)}>Сменить город</Text>
             <View style={menuSt.location}>
                 <Image source={require('../../../assets/location.webp')} />
-                <Text style={generalSt.title} onPress={() => location()}>{usedTextsMenu.optionsLocation}</Text>
+                <Text style={generalSt.title} onPress={() => location()}>Мое местоположение</Text>
             </View>
         </View>
     );
 }
 
 
-export default MenuOptions;
+export default MenuButtons;

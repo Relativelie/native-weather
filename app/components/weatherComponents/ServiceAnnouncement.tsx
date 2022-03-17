@@ -1,10 +1,13 @@
 import { FC } from "react";
 import { View, Text } from "react-native"
+
 import { generalSt } from '../../stylesheets/styles';
 
+
 interface Props {
-    text: string | object | any
+    text: string 
 }
+
 
 const ServiceAnnouncement:FC<Props> = ({text}) => {
 

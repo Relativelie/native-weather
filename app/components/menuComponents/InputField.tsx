@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { TextInput, View, TouchableOpacity, Text, Keyboard } from "react-native";
+import { TextInput, View, TouchableOpacity, Text } from "react-native";
 
 import { menuSt } from '../../stylesheets/styles';
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { usedTextsMenu } from "../../usedTexts/usedTextsMenu";
 
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
 const InputField:FC<Props> = ({selectAnotherCity}) => {
     const { cityInputText } = useTypedSelector(state => state.menu);
     const { textInputAction } = useActions();
-    console.log(typeof selectAnotherCity)
+
 
     return (
         <View style={[menuSt.general, menuSt.focusedInput]}>
@@ -23,17 +24,16 @@ const InputField:FC<Props> = ({selectAnotherCity}) => {
                 autoFocus={true}
                 onChangeText={(e) => textInputAction(e)}
                 value={cityInputText}
-                placeholder={"Город"}
+                placeholder={usedTextsMenu.inputFieldPlaceholder}
                 onEndEditing={() => selectAnotherCity()}
                 maxLength={22}
             />
             <TouchableOpacity
                 onPress={() => selectAnotherCity()}>
-                <Text style={menuSt.cityInEditingBtn}>ОК</Text>
+                <Text style={menuSt.cityInEditingBtn}>{usedTextsMenu.inputFieldBtn}</Text>
             </TouchableOpacity>
         </View>
     )
-
 }
 
 

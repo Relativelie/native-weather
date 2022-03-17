@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import { usedTextsWeather } from "../usedTexts/usedTextsWeather";
 import ServiceAnnouncement from "./weatherComponents/ServiceAnnouncement";
 import WeatherDisplay from "./weatherComponents/WeatherDisplay";
 
@@ -15,10 +16,10 @@ const Weather:FC = () => {
     const { getWeatherData } = useActions();
 
 
-
     useEffect(() => {
         getWeatherData(selectedCity);
     }, [selectedCity])
+
 
     // Loading value from api.
     useEffect(() => {
@@ -28,10 +29,11 @@ const Weather:FC = () => {
         else setIsLoading(false);
     });
 
+
     // Displayed components.
     const displayedValue = () => {
-        if (isLoading) return <ServiceAnnouncement text={"Loading..."}/>;
-        else if (locationError) return <ServiceAnnouncement text={"Для просмотра погоды по местоположению включите location на вашем девайсе"}/>;
+        if (isLoading) return <ServiceAnnouncement text={usedTextsWeather.loading}/>;
+        else if (locationError) return <ServiceAnnouncement text={usedTextsWeather.locationPermissionError}/>;
         else {
             if (typeof weatherData[0] === "string") {
                 return <ServiceAnnouncement text={`${weatherData[0]} ${weatherData[1]}`}/>

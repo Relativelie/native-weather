@@ -4,6 +4,7 @@ import { View, Text, ImageBackground } from "react-native";
 import { weatherSt } from '../../stylesheets/styles';
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { WeatherDisplayDetails } from "./WeatherDisplayDetails";
+import { usedTextsWeather } from "../../usedTexts/usedTextsWeather";
 
 
 
@@ -15,10 +16,7 @@ const WeatherDisplay:FC = () => {
     // Convert to wind direction.
     const convertWindValue = (value: number):string => {
         if (!isNaN(value)) {
-            const windDirections = [
-                "северный", "северо-восточный", "восточный", "юго-восточный", "южный",
-                "юго-западный", "западный", "северо-западный", "северный"
-            ];
+            const windDirections:string[] = usedTextsWeather.windDirections;
 
             // Limit wind direction to 360 degrees.
             let intValue = Math.floor(value / 360);
@@ -57,23 +55,23 @@ const WeatherDisplay:FC = () => {
 
                 <View style={weatherSt.otherValuesElem}>
                     <WeatherDisplayDetails
-                        typeOfWeather={["Ветер", "м/с"]}
+                        typeOfWeather={usedTextsWeather.typeOfWeather.wind}
                         mainValue={weatherData[0].windSpeed}
                         clarificationValue={convertWindValue(weatherData[0].windDeg)}
                     />
                     <WeatherDisplayDetails
-                        typeOfWeather={["Влажность", "%"]}
+                        typeOfWeather={usedTextsWeather.typeOfWeather.humidity}
                         mainValue={weatherData[0].humidity}
                         clarificationValue={null} />
                 </View>
 
                 <View style={weatherSt.otherValuesElem}>
                     <WeatherDisplayDetails
-                        typeOfWeather={["Давление", "мм рт.ст"]}
+                        typeOfWeather={usedTextsWeather.typeOfWeather.pressure}
                         mainValue={parseInt((weatherData[0].pressure * 0.75).toFixed(0))}
                         clarificationValue={null} />
                     <WeatherDisplayDetails
-                        typeOfWeather={["Вероятность дождя", "%"]}
+                        typeOfWeather={usedTextsWeather.typeOfWeather.rain}
                         mainValue={weatherData[0].rain}
                         clarificationValue={null} />
                 </View>
