@@ -3,7 +3,7 @@ export interface MenuState {
     cityInputText: string;
     isInputFocus: boolean;
     selectedCity: string;
-    isLoading: boolean
+    // isLoading: boolean
 }
 
 export enum MenuActionTypes {
@@ -12,7 +12,7 @@ export enum MenuActionTypes {
     INPUT_ON_FOCUS = "INPUT_ON_FOCUS",
     SELECTING_CITY = "SELECTING_CITY",
     LOCATE = "LOCATE",
-    LOADING = "LOADING",
+    // LOADING = "LOADING",
     SELECT_ANOTHER_CITY = "SELECT_ANOTHER_CITY"
 }
 
@@ -43,10 +43,10 @@ interface Locate {
     payload: string
 }
 
-interface Loading {
-    type: MenuActionTypes.LOADING,
-    payload: boolean
-}
+// interface Loading {
+//     type: MenuActionTypes.LOADING,
+//     payload: boolean
+// }
 
 
 export type MenuAction =
@@ -55,4 +55,4 @@ export type MenuAction =
     | InputOnFocusAction
     | SelectingCityAction
     | Locate
-    | Loading
+    // | Loading

@@ -9,25 +9,16 @@ import WeatherDisplay from "./weatherComponents/WeatherDisplay";
 
 
 const Weather:FC = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
 
-    const { weatherData, locationError } = useTypedSelector(state => state.weather);
+    const { weatherData, locationError, isLoading } = useTypedSelector(state => state.weather);
     const { selectedCity } = useTypedSelector(state => state.menu);
-    const { getWeatherData } = useActions();
+    const { getWeatherData, loading } = useActions();
 
 
     useEffect(() => {
         getWeatherData(selectedCity);
     }, [selectedCity])
-
-
-    // Loading value from api.
-    useEffect(() => {
-        if ((Array.isArray(weatherData) && weatherData.length === 0) || Object.keys(weatherData).length === 0) {
-            setIsLoading(true);
-        }  
-        else setIsLoading(false);
-    });
 
 
     // Displayed components.

@@ -7,7 +7,7 @@ const initialState: MenuState = {
     cityInputText: usedTextsMenu.establishedCity,
     isInputFocus: false,
     selectedCity: usedTextsMenu.establishedCity,
-    isLoading: false
+    // isLoading: true
 }
 
 export const menuReducer = (state = initialState, action: MenuAction): MenuState => {
@@ -53,11 +53,13 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
                 }
             }
 
-        case MenuActionTypes.LOADING:
-            return {
-                ...state,
-                isLoading: action.payload
-            }
+        // case MenuActionTypes.LOADING:
+        //     console.log("action", action.payload)
+        //     console.log("isLoadingaction", state.isLoading)
+        //     return {
+        //         ...state,
+        //         isLoading: action.payload
+        //     }
 
         case MenuActionTypes.LOCATE:
             return {

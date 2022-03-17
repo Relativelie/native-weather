@@ -2,7 +2,8 @@ import { weatherState, WeatherAction, WeatherActionTypes } from "../../types/wea
 
 const initialState: weatherState = {
     weatherData: [],
-    locationError: false
+    locationError: false,
+    isLoading: true
 }
 
 
@@ -18,6 +19,14 @@ export const weatherReducer = (state = initialState, action: WeatherAction): wea
             return {
                 ...state,
                 locationError: action.payload
+            }
+
+        case WeatherActionTypes.LOADING:
+            console.log("action", action.payload)
+            console.log("isLoadingaction", state.isLoading)
+            return {
+                ...state,
+                isLoading: action.payload
             }
 
         default:
