@@ -1,14 +1,14 @@
 import { StatusBar, Text, View } from "react-native"
 import { Provider, useSelector } from "react-redux"
-import { useTypedSelector } from "./app/components/hooks/useTypedSelector"
+import { useTypedSelector } from "./app/hooks/useTypedSelector"
 import Menu from "./app/components/Menu"
 import { storeT } from "./app/store"
 import { appStyles } from "./app/stylesheets/styles"
 import Weather from './app/components/Weather';
 import { useState } from "react";
 import AppLoading from 'expo-app-loading';
-import fonts from "./app/components/hooks/useFonts"
-import { useActions } from "./app/components/hooks/useActions"
+import fonts from "./app/hooks/useFonts"
+import { useActions } from "./app/hooks/useActions"
 import MainComponent from "./app/components/MainComponent"
 
 

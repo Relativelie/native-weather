@@ -2,8 +2,8 @@ import { FC } from "react";
 import { TextInput, View, TouchableOpacity, Text, Keyboard } from "react-native";
 
 import { menuSt } from '../../stylesheets/styles';
-import { useActions } from "../hooks/useActions";
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 
-const CityInputInFocus:FC<Props> = ({selectAnotherCity}) => {
+const InputField:FC<Props> = ({selectAnotherCity}) => {
     const { cityInputText } = useTypedSelector(state => state.menu);
     const { textInputAction } = useActions();
     console.log(typeof selectAnotherCity)
@@ -37,4 +37,4 @@ const CityInputInFocus:FC<Props> = ({selectAnotherCity}) => {
 }
 
 
-export default CityInputInFocus;
+export default InputField;

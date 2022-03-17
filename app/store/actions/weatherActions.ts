@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 
-import { errorTexts } from "../../components/weatherComponents/openWeatherApiErrors";
+import { errorTexts } from "../../usedTexts/openWeatherApiErrors";
 import { getWeather } from "../../requests/getWeather";
 import { WeatherAction, WeatherActionTypes } from "../../types/weatherTypes";
 

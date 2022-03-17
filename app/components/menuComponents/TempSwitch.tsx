@@ -3,11 +3,11 @@ import { FC } from 'react';
 import { Animated, View, Text } from "react-native";
 
 import { menuSt, titleAndSwitchColor } from '../../stylesheets/styles';
-import { useActions } from '../hooks/useActions';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 
-const SwitchElem: FC = () => {
+const TempSwitch: FC = () => {
     const { isCelsius } = useTypedSelector(state => state.menu);
     const { tempConversion } = useActions();
 
@@ -56,4 +56,4 @@ const SwitchElem: FC = () => {
 }
 
 
-export default SwitchElem;
+export default TempSwitch;

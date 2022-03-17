@@ -2,7 +2,7 @@ import { FC } from "react";
 import { View, Text, ImageBackground } from "react-native";
 
 import { weatherSt } from '../../stylesheets/styles';
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { WeatherDisplayDetails } from "./WeatherDisplayDetails";
 
 

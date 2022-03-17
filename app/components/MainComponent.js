@@ -2,7 +2,7 @@ import { Keyboard, StatusBar, View } from "react-native"
 import Menu from "./Menu"
 import Weather from './Weather';
 import { appStyles } from "../stylesheets/styles";
-import { useActions } from "./hooks/useActions";
+import { useActions } from "../hooks/useActions";
 
 
 

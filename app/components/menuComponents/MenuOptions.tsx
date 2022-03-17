@@ -3,10 +3,10 @@ import { View, Text, Image, Button } from "react-native";
 
 import { getLocation } from "../../requests/getLocation";
 import { generalSt, menuSt } from '../../stylesheets/styles';
-import { useActions } from "../hooks/useActions";
+import { useActions } from "../../hooks/useActions";
 
 
-const MenuButtons: FC = () => {
+const MenuOptions: FC = () => {
     const { inputOnFocus, locate, loading, bringLocationError } = useActions();
 
     const location = async () => {
@@ -39,4 +39,4 @@ const MenuButtons: FC = () => {
 }
 
 
-export default MenuButtons;
+export default MenuOptions;

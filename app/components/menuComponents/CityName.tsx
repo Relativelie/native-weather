@@ -2,10 +2,10 @@ import { FC } from "react";
 import { Text, View } from "react-native";
 
 import { menuSt } from '../../stylesheets/styles';
-import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 
-const CityText: FC = () => {
+const CityName: FC = () => {
     const { cityInputText} = useTypedSelector(state => state.menu);
 
 
@@ -17,4 +17,4 @@ const CityText: FC = () => {
 }
 
 
-export default CityText;
+export default CityName;

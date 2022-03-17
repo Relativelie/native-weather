@@ -2,11 +2,11 @@ import { View } from 'react-native';
 import { FC } from 'react';
 
 import { menuSt } from '../stylesheets/styles';
-import SwitchElem from './menuComponents/SwitchElem';
-import MenuButtons from './menuComponents/MenuButtons';
-import CityText from './menuComponents/CityText';
-import CityInputInFocus from './menuComponents/CityInputInFocus';
-import { useTypedSelector } from './hooks/useTypedSelector';
+import TempSwitch from './menuComponents/TempSwitch';
+import MenuOptions from './menuComponents/MenuOptions';
+import CityName from './menuComponents/CityName';
+import InputField from './menuComponents/InputField';
+import { useTypedSelector } from '../hooks/useTypedSelector';
 
 
 interface Props {
@@ -22,10 +22,10 @@ const Menu: FC<Props> = ({ selectAnotherCity }) => {
     return (
       <View style={[menuSt.container, menuSt.containerPad]}>
         <View style={[menuSt.cityAndSwitch, menuSt.general]}>
-          <CityText />
-          <SwitchElem />
+          <CityName />
+          <TempSwitch />
         </View>
-        <MenuButtons />
+        <MenuOptions />
       </View>
     );
   }
@@ -34,7 +34,7 @@ const Menu: FC<Props> = ({ selectAnotherCity }) => {
     return (
       <View style={[menuSt.container, menuSt.containerPadInput]}>
         <View style={[menuSt.cityInEditing, menuSt.general]}>
-          <CityInputInFocus selectAnotherCity={selectAnotherCity} />
+          <InputField selectAnotherCity={selectAnotherCity} />
         </View>
       </View>
     );

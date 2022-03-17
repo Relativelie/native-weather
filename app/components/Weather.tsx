@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { useEffect, useState } from "react";
 
-import { useActions } from "./hooks/useActions";
-import { useTypedSelector } from "./hooks/useTypedSelector";
+import { useActions } from "../hooks/useActions";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 import ServiceAnnouncement from "./weatherComponents/ServiceAnnouncement";
 import WeatherDisplay from "./weatherComponents/WeatherDisplay";
 
