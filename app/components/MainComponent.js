@@ -8,9 +8,7 @@ import { useActions } from "./hooks/useActions";
 
 const MainComponent = () => {
 
-    //   const [IsFontReady, SetIsFontReady] = useState(false);
     const { selectingCity, inputOnFocus } = useActions()
-
 
     const selectAnotherCity = () => {
         selectingCity();
@@ -19,11 +17,10 @@ const MainComponent = () => {
         inputOnFocus(false)
     }
 
+
     return (
-
-
-
         <View style={appStyles.container} onStartShouldSetResponder={() => selectAnotherCity()}>
+
             <StatusBar
                 hidden={false}
                 backgroundColor="#7290B9"
@@ -31,9 +28,9 @@ const MainComponent = () => {
                 translucent={true} />
             <Menu selectAnotherCity={selectAnotherCity} />
             <View style={appStyles.weatherValuesContainer}>
-
                 <Weather />
             </View>
+
         </View>
 
     )

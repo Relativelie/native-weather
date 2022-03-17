@@ -13,8 +13,8 @@ const Weather:FC = () => {
     const { weatherData } = useTypedSelector(state => state.weather);
     const { selectedCity } = useTypedSelector(state => state.menu);
     const { getWeatherData, loading } = useActions();
+    const [chosenCity] = useState(weatherData);
 
-    
 
     useEffect(() => {
         getWeatherData(selectedCity);
@@ -34,12 +34,10 @@ const Weather:FC = () => {
 
 
 
-
     // Displayed components.
     const displayedValue = () => {
 
         if (isLoading) return <LoadingProcess />;
-
         else {
             if (typeof weatherData[0] === "string") {
                 return <DisplayedErrorData />

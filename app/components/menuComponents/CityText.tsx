@@ -14,7 +14,7 @@ const CityText: FC<Props> = ( {a} ) => {
 
     return (
         <View>
-            <Text >{a}</Text>
+            <Text style={menuSt.cityText}>{a}</Text>
         </View>
     );
 }

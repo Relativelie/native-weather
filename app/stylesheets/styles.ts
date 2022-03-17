@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 
 export const titleAndSwitchColor = "rgba(255, 255, 255, 0.6)";
@@ -33,7 +33,7 @@ export const appStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#7290B9',
-        // paddingTop: Platform.OS === "android" ? 0 : 40
+        paddingTop: Platform.OS === "android" ? 0 : 40
     }, 
 
     weatherValuesContainer: {
@@ -58,7 +58,7 @@ export const menuSt = StyleSheet.create({
 
     // Input container in focus.
     containerPadInput: {
-        // paddingTop: Platform.OS === "android" ? 0 : 39,
+        paddingTop: Platform.OS === "android" ? 0 : 39,
     },
 
     cityInEditing: {
@@ -96,7 +96,7 @@ export const menuSt = StyleSheet.create({
 
     // Input is not in focus.
     containerPad: {
-        // paddingTop: Platform.OS === "android" ? 19 : 49,
+        paddingTop: Platform.OS === "android" ? 25 : 49,
     },
 
     cityAndSwitch: {

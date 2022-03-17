@@ -14,24 +14,22 @@ interface Props {
 }
 
 
-const Menu: FC<Props> = ({selectAnotherCity}) => {
+const Menu: FC<Props> = ({ selectAnotherCity }) => {
 
   const { cityInputText, isInputFocus } = useTypedSelector(state => state.menu);
-  
+
 
 
   if (!isInputFocus) {
     return (
       <View style={[menuSt.container, menuSt.containerPad]}>
+
+
         <View style={[menuSt.cityAndSwitch, menuSt.general]}>
-
-
-          <CityText
-            a={cityInputText}
-          />
+          <CityText a={cityInputText} />
+          <SwitchElem />
         </View>
 
-        <SwitchElem/>
 
         <MenuButtons />
       </View>
@@ -43,7 +41,7 @@ const Menu: FC<Props> = ({selectAnotherCity}) => {
       <View style={[menuSt.container, menuSt.containerPadInput]}>
         <View style={[menuSt.cityInEditing, menuSt.general]}>
 
-          <CityInputInFocus selectAnotherCity={selectAnotherCity}/>
+          <CityInputInFocus selectAnotherCity={selectAnotherCity} />
 
         </View>
       </View>

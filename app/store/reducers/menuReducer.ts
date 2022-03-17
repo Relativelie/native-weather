@@ -34,20 +34,25 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
             }
 
         case MenuActionTypes.SELECTING_CITY:
-
-            let city: string;
-            if (state.cityInputText !== state.selectedCity) {
-                city = state.cityInputText
+            if (state.cityInputText === state.selectedCity) {
+                return {
+                    ...state,
+                    isInputFocus: false
+                }
             }
-            else if (state.cityInputText === "") {
-                city = state.selectedCity
-            }
-
-
-            return {
-                ...state,
-                selectedCity: city,
-                isInputFocus: false
+            else {
+                let city: string;
+                if (state.cityInputText !== state.selectedCity) {
+                    city = state.cityInputText
+                }
+                else if (state.cityInputText === "") {
+                    city = state.selectedCity
+                }
+                return {
+                    ...state,
+                    selectedCity: city,
+                    isInputFocus: false
+                }
             }
 
         case MenuActionTypes.LOADING:

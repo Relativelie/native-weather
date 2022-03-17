@@ -2,7 +2,6 @@ import { FC } from "react";
 import { View, Text, ImageBackground } from "react-native";
 
 import { weatherSt } from '../../stylesheets/styles';
-import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { WeatherDetails } from "./WeatherDetails";
 
@@ -10,8 +9,7 @@ import { WeatherDetails } from "./WeatherDetails";
 const DisplayedSuccessfulData:FC = () => {
 
     const { weatherData } = useTypedSelector(state => state.weather);
-    const { isLoading, isCelsius } = useTypedSelector(state => state.menu);
-    const { inputOnFocus, locate, loading } = useActions();
+    const { isCelsius } = useTypedSelector(state => state.menu);
 
     // Convert to wind direction.
     const convertWindValue = (value: number) => {
@@ -35,7 +33,6 @@ const DisplayedSuccessfulData:FC = () => {
         let temp = isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}°`;
         return temp;
     };
-    console.log(weatherData);
 
 
     return (

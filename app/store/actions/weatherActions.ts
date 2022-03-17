@@ -6,7 +6,6 @@ import { WeatherAction, WeatherActionTypes } from "../../types/weatherTypes";
 export const getWeatherData = (city: string) => {
     return async (dispatch: Dispatch<WeatherAction>) => {
         const result = await getWeather(city);
-        console.log("getget")
         if (errorTexts[result.cod]) {
             dispatch({
                 type: WeatherActionTypes.GET_DATA,
