@@ -1,15 +1,12 @@
 import { FC } from "react";
 import { View, Text, Image, Button } from "react-native";
+
 import { getLocation } from "../../requests/getLocation";
 import { generalSt, menuSt } from '../../stylesheets/styles';
 import { useActions } from "../hooks/useActions";
 
-// type Props = {
-//     onPress(): void
-// }
 
 const MenuButtons: FC = () => {
-
     const { inputOnFocus, locate, loading } = useActions();
 
     const location = async () => {
@@ -18,11 +15,15 @@ const MenuButtons: FC = () => {
         // Get location info.
         let cityName = await getLocation();
         loading(false);
+        console.log(cityName)
         if (!cityName?.error) {
             locate(cityName.city);
         }
+        else {
+            
+        }
+    };
 
-    }
 
     return (
 

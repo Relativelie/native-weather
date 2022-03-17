@@ -7,9 +7,7 @@ import { useActions } from '../hooks/useActions';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 
 
-const SwitchElem:FC = () => {
-
-
+const SwitchElem: FC = () => {
     const { isCelsius } = useTypedSelector(state => state.menu);
     const { tempConversion } = useActions();
 
@@ -20,7 +18,7 @@ const SwitchElem:FC = () => {
 
     const value = useRef(new Animated.Value(animate_state.start)).current;
 
-    const startAnimate = () => {
+    const startAnimate = ():void => {
         tempConversion()
         Animated.timing(value, { toValue: !isCelsius ? animate_state.start : animate_state.end, useNativeDriver: false, duration: 300 }).start();
     };

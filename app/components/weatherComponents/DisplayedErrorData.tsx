@@ -5,9 +5,9 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 
 
 const DisplayedErrorData:FC = () => {
-
     const { weatherData } = useTypedSelector(state => state.weather);
-    // console.log(weatherData)
+
+
     return (
         <View>
             <Text style={generalSt.serviceAnnouncement}>{weatherData}</Text>

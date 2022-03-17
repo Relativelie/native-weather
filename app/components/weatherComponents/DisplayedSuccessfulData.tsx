@@ -6,15 +6,16 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import { WeatherDetails } from "./WeatherDetails";
 
 
+
 const DisplayedSuccessfulData:FC = () => {
 
     const { weatherData } = useTypedSelector(state => state.weather);
     const { isCelsius } = useTypedSelector(state => state.menu);
 
     // Convert to wind direction.
-    const convertWindValue = (value: number) => {
+    const convertWindValue = (value: number):string => {
         if (!isNaN(value)) {
-            const windtDerictions = [
+            const windDirections = [
                 "северный", "северо-восточный", "восточный", "юго-восточный", "южный",
                 "юго-западный", "западный", "северо-западный", "северный"
             ];
@@ -25,11 +26,11 @@ const DisplayedSuccessfulData:FC = () => {
 
             // Matching up with the wind array.
             let directionIndex = Math.round(floatValue / 45) + intValue;
-            return windtDerictions[directionIndex - 1];
+            return windDirections[directionIndex - 1];
         }
     };
 
-    const convertTempValue = (value: number) => {
+    const convertTempValue = (value: number):string => {
         let temp = isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}°`;
         return temp;
     };
@@ -69,7 +70,7 @@ const DisplayedSuccessfulData:FC = () => {
                 <View style={weatherSt.otherValuesElem}>
                     <WeatherDetails
                         typeOfWeather={["Давление", "мм рт.ст"]}
-                        mainValue={(weatherData[0].pressure * 0.75).toFixed(0)}
+                        mainValue={parseInt((weatherData[0].pressure * 0.75).toFixed(0))}
                         clarificationValue={null} />
                     <WeatherDetails
                         typeOfWeather={["Вероятность дождя", "%"]}

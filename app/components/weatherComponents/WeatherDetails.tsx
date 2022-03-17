@@ -1,8 +1,16 @@
+import { FC } from "react";
 import { View, Text } from "react-native";
+
 import { generalSt, weatherSt } from '../../stylesheets/styles';
 
 
-export const WeatherDetails = ({typeOfWeather, mainValue, clarificationValue}) => {
+interface Props {
+    typeOfWeather: Array<string>,
+    mainValue: number,
+    clarificationValue: string | null
+}
+
+export const WeatherDetails:FC<Props> = ({typeOfWeather, mainValue, clarificationValue}) => {
 
     
     return (
