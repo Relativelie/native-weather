@@ -17,7 +17,8 @@ const MenuOptions: FC = () => {
         let cityName = await getLocation();
         loading(false);
 
-        if (!cityName?.error) {
+        console.log(cityName, cityName.city !== false)
+        if (cityName.city !== false) {
             locate(cityName.city);
             bringLocationError(false);
         }

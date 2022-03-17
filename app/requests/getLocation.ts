@@ -1,7 +1,7 @@
 import * as Location from 'expo-location';
 
 interface ResultType {
-    [key: string]:  string  
+    [key: string]: string | any
 }
 
 export const getLocation = async (): Promise<ResultType> => {
@@ -20,13 +20,11 @@ export const getLocation = async (): Promise<ResultType> => {
                 longitude: locationData.coords.longitude,
             });
         };
-    }
-    catch {
-        result.error = "true";
-    }
-    finally {
+    } catch (err) {
+        console.log(err)
+    } finally {
         result.city = regionName != undefined && regionName[0].city;
-    };
+    }
 
 
     return result;
