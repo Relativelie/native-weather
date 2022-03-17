@@ -8,13 +8,14 @@ import { useActions } from "./hooks/useActions";
 
 const MainComponent = () => {
 
-    const { selectingCity, inputOnFocus } = useActions()
+    const { selectingCity, inputOnFocus, bringLocationError } = useActions()
 
     const selectAnotherCity = () => {
         selectingCity();
 
         Keyboard.dismiss();
-        inputOnFocus(false)
+        inputOnFocus(false);
+        bringLocationError(false)
     }
 
 

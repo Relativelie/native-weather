@@ -7,7 +7,7 @@ import { useActions } from "../hooks/useActions";
 
 
 const MenuButtons: FC = () => {
-    const { inputOnFocus, locate, loading } = useActions();
+    const { inputOnFocus, locate, loading, bringLocationError } = useActions();
 
     const location = async () => {
         //Show loading display while get location.
@@ -18,9 +18,10 @@ const MenuButtons: FC = () => {
         console.log(cityName)
         if (!cityName?.error) {
             locate(cityName.city);
+            bringLocationError(false)
         }
         else {
-            
+            bringLocationError(true)
         }
     };
 

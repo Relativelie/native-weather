@@ -3,11 +3,11 @@ import { View, Text, ImageBackground } from "react-native";
 
 import { weatherSt } from '../../stylesheets/styles';
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { WeatherDetails } from "./WeatherDetails";
+import { WeatherDisplayDetails } from "./WeatherDisplayDetails";
 
 
 
-const DisplayedSuccessfulData:FC = () => {
+const WeatherDisplay:FC = () => {
 
     const { weatherData } = useTypedSelector(state => state.weather);
     const { isCelsius } = useTypedSelector(state => state.menu);
@@ -56,23 +56,23 @@ const DisplayedSuccessfulData:FC = () => {
             <View style={weatherSt.otherValues}>
 
                 <View style={weatherSt.otherValuesElem}>
-                    <WeatherDetails
+                    <WeatherDisplayDetails
                         typeOfWeather={["Ветер", "м/с"]}
                         mainValue={weatherData[0].windSpeed}
                         clarificationValue={convertWindValue(weatherData[0].windDeg)}
                     />
-                    <WeatherDetails
+                    <WeatherDisplayDetails
                         typeOfWeather={["Влажность", "%"]}
                         mainValue={weatherData[0].humidity}
                         clarificationValue={null} />
                 </View>
 
                 <View style={weatherSt.otherValuesElem}>
-                    <WeatherDetails
+                    <WeatherDisplayDetails
                         typeOfWeather={["Давление", "мм рт.ст"]}
                         mainValue={parseInt((weatherData[0].pressure * 0.75).toFixed(0))}
                         clarificationValue={null} />
-                    <WeatherDetails
+                    <WeatherDisplayDetails
                         typeOfWeather={["Вероятность дождя", "%"]}
                         mainValue={weatherData[0].rain}
                         clarificationValue={null} />
@@ -84,4 +84,4 @@ const DisplayedSuccessfulData:FC = () => {
 }
 
 
-export default DisplayedSuccessfulData;
+export default WeatherDisplay;

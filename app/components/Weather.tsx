@@ -3,18 +3,17 @@ import { useEffect, useState } from "react";
 
 import { useActions } from "./hooks/useActions";
 import { useTypedSelector } from "./hooks/useTypedSelector";
-import DisplayedErrorData from "./weatherComponents/DisplayedErrorData";
-import DisplayedSuccessfulData from "./weatherComponents/DisplayedSuccessfulData";
-import LoadingProcess from "./weatherComponents/LoadingProcess";
+import ServiceAnnouncement from "./weatherComponents/ServiceAnnouncement";
+import WeatherDisplay from "./weatherComponents/WeatherDisplay";
 
 
 const Weather:FC = () => {
     const [isLoading, setIsLoading] = useState(true);
 
-    const { weatherData } = useTypedSelector(state => state.weather);
+    const { weatherData, locationError } = useTypedSelector(state => state.weather);
     const { selectedCity } = useTypedSelector(state => state.menu);
     const { getWeatherData } = useActions();
-    const [chosenCity] = useState(weatherData);
+
 
 
     useEffect(() => {
@@ -31,13 +30,14 @@ const Weather:FC = () => {
 
     // Displayed components.
     const displayedValue = () => {
-        if (isLoading) return <LoadingProcess />;
+        if (isLoading) return <ServiceAnnouncement text={"Loading..."}/>;
+        else if (locationError) return <ServiceAnnouncement text={"Для просмотра погоды по местоположению включите location на вашем девайсе"}/>;
         else {
             if (typeof weatherData[0] === "string") {
-                return <DisplayedErrorData />
+                return <ServiceAnnouncement text={`${weatherData[0]} ${weatherData[1]}`}/>
             }
             else return (
-                <DisplayedSuccessfulData/>
+                <WeatherDisplay/>
             );
         };
     };

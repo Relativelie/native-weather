@@ -10,7 +10,7 @@ interface Props {
     clarificationValue: string | null
 }
 
-export const WeatherDetails:FC<Props> = ({typeOfWeather, mainValue, clarificationValue}) => {
+export const WeatherDisplayDetails:FC<Props> = ({typeOfWeather, mainValue, clarificationValue}) => {
 
     
     return (

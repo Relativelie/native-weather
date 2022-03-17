@@ -1,7 +1,9 @@
 import { Dispatch } from "react";
+
 import { errorTexts } from "../../components/weatherComponents/openWeatherApiErrors";
 import { getWeather } from "../../requests/getWeather";
 import { WeatherAction, WeatherActionTypes } from "../../types/weatherTypes";
+
 
 export const getWeatherData = (city: string) => {
     return async (dispatch: Dispatch<WeatherAction>) => {
@@ -31,5 +33,8 @@ export const getWeatherData = (city: string) => {
     }
 }
 
-
+export const bringLocationError = (value: boolean):WeatherAction => ({
+    type: WeatherActionTypes.BRING_LOCATION_ERROR,
+    payload: value
+})
 
