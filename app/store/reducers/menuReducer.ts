@@ -24,10 +24,11 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
             }
 
         case MenuActionTypes.TEXT_INPUT:
+            let city = action.payload
 
             return {
                 ...state,
-                cityInputText: action.payload
+                cityInputText: city
             }
 
         case MenuActionTypes.SELECTING_CITY:
@@ -39,6 +40,8 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
             }
             else {
                 let city: string;
+
+
                 if (state.cityInputText !== state.selectedCity) {
                     city = state.cityInputText
                 }
@@ -47,7 +50,7 @@ export const menuReducer = (state = initialState, action: MenuAction): MenuState
                 }
                 return {
                     ...state,
-                    selectedCity: city,
+                    selectedCity: city.trim(),
                     isInputFocus: false
                 }
             }

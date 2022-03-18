@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
@@ -18,7 +18,7 @@ const Weather:FC = () => {
         getWeatherData(selectedCity);
     }, [selectedCity])
 
-
+    
     // Displayed components.
     const displayedValue = () => {
         if (isLoading) return <ServiceAnnouncement text={usedTextsWeather.loading}/>;
