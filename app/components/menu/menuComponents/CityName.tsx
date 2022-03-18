@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Text, View } from "react-native";
 
-import { menuSt } from '../../stylesheets/styles';
-import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { menuSt } from '../menuStyles';
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 
 const CityName: FC = () => {

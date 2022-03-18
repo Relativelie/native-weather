@@ -1,5 +1,5 @@
 export interface weatherState {
-    weatherData:  Array<any> | object,
+    weatherData:  object,
     locationError: boolean,
     isLoading: boolean
 }
@@ -12,7 +12,7 @@ export enum WeatherActionTypes {
 
 interface GetDataAction {
     type: WeatherActionTypes.GET_DATA,
-    payload: Array<any> | object
+    payload: object
 }
 
 interface BringLocationError {

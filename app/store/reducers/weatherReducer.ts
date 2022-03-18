@@ -22,8 +22,6 @@ export const weatherReducer = (state = initialState, action: WeatherAction): wea
             }
 
         case WeatherActionTypes.LOADING:
-            console.log("action", action.payload)
-            console.log("isLoadingaction", state.isLoading)
             return {
                 ...state,
                 isLoading: action.payload

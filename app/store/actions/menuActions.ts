@@ -19,11 +19,6 @@ export const selectingCity = (): MenuAction => ({
     type: MenuActionTypes.SELECTING_CITY
 });
 
-// export const loading = (value: boolean):MenuAction => ({
-//     type: MenuActionTypes.LOADING,
-//     payload: value
-// })
-
 export const locate = (city: string):MenuAction => ({
     type: MenuActionTypes.LOCATE,
     payload: city

@@ -1,12 +1,12 @@
 import { View } from 'react-native';
 import { FC } from 'react';
 
-import { menuSt } from '../stylesheets/styles';
+import { menuSt } from './menuStyles';
 import TempSwitch from './menuComponents/TempSwitch';
 import MenuOptions from './menuComponents/MenuOptions';
 import CityName from './menuComponents/CityName';
 import InputField from './menuComponents/InputField';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 
 interface Props {

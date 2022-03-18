@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { View, Text } from "react-native";
 
-import { generalSt, weatherSt } from '../../stylesheets/styles';
+import { weatherSt } from '../weatherStyles';
+import { generalSt } from '../../mixinsStyles';
 
 
 interface Props {

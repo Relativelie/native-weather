@@ -1,8 +1,8 @@
 import { Keyboard, StatusBar, View } from "react-native"
 
-import Menu from "./Menu"
-import Weather from './Weather';
-import { appStyles } from "../stylesheets/styles";
+import Menu from "./menu/Menu"
+import Weather from './weather/Weather';
+import { appStyles } from "./mainComponentStyle";
 import { useActions } from "../hooks/useActions";
 
 

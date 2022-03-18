@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { TextInput, View, TouchableOpacity, Text } from "react-native";
 
-import { menuSt } from '../../stylesheets/styles';
-import { useActions } from "../../hooks/useActions";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { usedTextsMenu } from "../../usedTexts/usedTextsMenu";
+import { menuSt } from '../menuStyles';
+import { useActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { usedTextsMenu } from "../../../usedTexts/usedTextsMenu";
 
 
 interface Props {

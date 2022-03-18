@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { View, Text } from "react-native"
 
-import { generalSt } from '../../stylesheets/styles';
+import { generalSt } from '../../mixinsStyles';
 
 
 interface Props {

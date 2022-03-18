@@ -2,8 +2,7 @@ export interface MenuState {
     isCelsius: boolean;
     cityInputText: string;
     isInputFocus: boolean;
-    selectedCity: string;
-    // isLoading: boolean
+    selectedCity: string
 }
 
 export enum MenuActionTypes {
@@ -11,9 +10,7 @@ export enum MenuActionTypes {
     TEXT_INPUT = "TEXT_INPUT",
     INPUT_ON_FOCUS = "INPUT_ON_FOCUS",
     SELECTING_CITY = "SELECTING_CITY",
-    LOCATE = "LOCATE",
-    // LOADING = "LOADING",
-    SELECT_ANOTHER_CITY = "SELECT_ANOTHER_CITY"
+    LOCATE = "LOCATE"
 }
 
 interface TempConversionAction {
@@ -34,19 +31,10 @@ interface SelectingCityAction {
     type: MenuActionTypes.SELECTING_CITY,
 }
 
-interface SelectAnotherCity {
-    type: MenuActionTypes.SELECT_ANOTHER_CITY
-}
-
 interface Locate {
     type: MenuActionTypes.LOCATE,
     payload: string
 }
-
-// interface Loading {
-//     type: MenuActionTypes.LOADING,
-//     payload: boolean
-// }
 
 
 export type MenuAction =
@@ -55,4 +43,3 @@ export type MenuAction =
     | InputOnFocusAction
     | SelectingCityAction
     | Locate
-    // | Loading

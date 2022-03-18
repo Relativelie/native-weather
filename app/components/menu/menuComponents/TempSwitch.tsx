@@ -2,10 +2,10 @@ import React, { useRef } from 'react'
 import { FC } from 'react';
 import { Animated, View, Text } from "react-native";
 
-import { menuSt, titleAndSwitchColor } from '../../stylesheets/styles';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { usedTextsMenu } from '../../usedTexts/usedTextsMenu';
+import { menuSt } from '../menuStyles';
+import { useActions } from '../../../hooks/useActions';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import { usedTextsMenu } from '../../../usedTexts/usedTextsMenu';
 
 
 const TempSwitch: FC = () => {
@@ -19,7 +19,7 @@ const TempSwitch: FC = () => {
 
     const value = useRef(new Animated.Value(animate_state.start)).current;
 
-    const startAnimate = ():void => {
+    const startAnimate = (): void => {
         tempConversion()
         Animated.timing(value, { toValue: !isCelsius ? animate_state.start : animate_state.end, useNativeDriver: false, duration: 300 }).start();
     };
@@ -45,11 +45,11 @@ const TempSwitch: FC = () => {
                         {usedTextsMenu.switchFahrenheit}
                     </Text>
                 </View>
-
-                <Animated.View style={{
-                    transform: [{ translateX: value }], position: "absolute", width: "50%", height: "100%",
-                    opacity: .5, borderRadius: 5, backgroundColor: titleAndSwitchColor,
-                }}>
+                <Animated.View
+                    style={[
+                        { transform: [{ translateX: value }] },
+                        menuSt.animationBlock
+                    ]}>
                 </Animated.View>
             </View>
         </View>

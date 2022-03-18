@@ -3,10 +3,8 @@ import { Dispatch } from "react";
 import { errorTexts } from "../../usedTexts/openWeatherApiErrors";
 import { getWeather } from "../../requests/getWeather";
 import { WeatherAction, WeatherActionTypes } from "../../types/weatherTypes";
-import { useActions } from "../../hooks/useActions";
-// import { loading } from "./menuActions";
-import { useState } from "react";
 import { MenuAction } from "../../types/menuTypes";
+
 
 export const loading = (value: boolean):WeatherAction => ({
     type: WeatherActionTypes.LOADING,
@@ -16,9 +14,7 @@ export const loading = (value: boolean):WeatherAction => ({
 export const getWeatherData = (city: string) => {
     return async (dispatch: Dispatch<WeatherAction | MenuAction>) => {
         dispatch(loading(true))
-
         const result = await getWeather(city);
-        console.log(1)
 
         if (errorTexts[result.cod]) {
             dispatch({
@@ -43,7 +39,6 @@ export const getWeatherData = (city: string) => {
             });
         };
         dispatch(loading(false))
-        console.log(2)
     }
 }
 

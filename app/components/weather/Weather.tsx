@@ -1,19 +1,17 @@
 import { FC } from "react";
 import { useEffect, useState } from "react";
 
-import { useActions } from "../hooks/useActions";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import { usedTextsWeather } from "../usedTexts/usedTextsWeather";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { usedTextsWeather } from "../../usedTexts/usedTextsWeather";
 import ServiceAnnouncement from "./weatherComponents/ServiceAnnouncement";
 import WeatherDisplay from "./weatherComponents/WeatherDisplay";
 
 
 const Weather:FC = () => {
-    // const [isLoading, setIsLoading] = useState(true);
-
     const { weatherData, locationError, isLoading } = useTypedSelector(state => state.weather);
     const { selectedCity } = useTypedSelector(state => state.menu);
-    const { getWeatherData, loading } = useActions();
+    const { getWeatherData } = useActions();
 
 
     useEffect(() => {
