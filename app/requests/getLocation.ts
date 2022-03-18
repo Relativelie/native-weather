@@ -1,7 +1,7 @@
 import * as Location from 'expo-location';
 
 interface ResultType {
-    [key: string]: string | any
+    [key: string]: string
 }
 
 
