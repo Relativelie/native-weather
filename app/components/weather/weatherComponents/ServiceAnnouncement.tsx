@@ -5,11 +5,11 @@ import { generalSt } from '../../mixinsStyles';
 
 
 interface Props {
-    text: string 
+    text: string
 }
 
 
-const ServiceAnnouncement:FC<Props> = ({text}) => {
+const ServiceAnnouncement: FC<Props> = ({ text }) => {
 
     return (
         <View>

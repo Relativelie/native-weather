@@ -1,10 +1,9 @@
 import { FC } from "react";
 import { View, Text, Image } from "react-native";
 
-import { getLocation } from "../../../requests/getLocation";
 import { menuSt } from '../menuStyles';
-
 import { generalSt } from '../../mixinsStyles';
+import { getLocation } from "../../../requests/getLocation";
 import { useActions } from "../../../hooks/useActions";
 import { usedTextsMenu } from "../../../usedTexts/usedTextsMenu";
 

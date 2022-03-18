@@ -9,7 +9,7 @@ import { useActions } from "../hooks/useActions";
 
 const MainComponent = () => {
 
-    const { selectingCity, inputOnFocus, bringLocationError } = useActions()
+    const { selectingCity, inputOnFocus, bringLocationError } = useActions();
 
     const selectAnotherCity = () => {
         selectingCity();
@@ -21,13 +21,17 @@ const MainComponent = () => {
 
 
     return (
-        <View style={appStyles.container} onStartShouldSetResponder={() => true} onResponderRelease={() => selectAnotherCity()}>
-
+        <View
+            style={appStyles.container}
+            onStartShouldSetResponder={() => true}
+            onResponderRelease={() => selectAnotherCity()}
+        >
             <StatusBar
                 hidden={false}
                 backgroundColor="#7290B9"
                 barStyle={"light-content"}
-                translucent={true} />
+                translucent={true}
+            />
             <Menu selectAnotherCity={selectAnotherCity} />
             <View style={appStyles.weatherValuesContainer}>
                 <Weather />

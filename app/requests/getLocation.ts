@@ -4,6 +4,7 @@ interface ResultType {
     [key: string]: string | any
 }
 
+
 export const getLocation = async (): Promise<ResultType> => {
     const result: ResultType | Promise<object> = {};
     let regionName: object;
@@ -20,9 +21,11 @@ export const getLocation = async (): Promise<ResultType> => {
                 longitude: locationData.coords.longitude,
             });
         };
-    } catch (err) {
+    }
+    catch (err) {
         console.log(err)
-    } finally {
+    }
+    finally {
         result.city = regionName != undefined && regionName[0].city;
     }
 

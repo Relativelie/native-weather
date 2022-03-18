@@ -7,7 +7,7 @@ export const appStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#7290B9',
         paddingTop: Platform.OS === "android" ? 0 : 40
-    }, 
+    },
 
     weatherValuesContainer: {
         height: "100%",

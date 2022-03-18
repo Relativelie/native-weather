@@ -12,7 +12,7 @@ interface Props {
 }
 
 
-const InputField:FC<Props> = ({selectAnotherCity}) => {
+const InputField: FC<Props> = ({ selectAnotherCity }) => {
     const { cityInputText } = useTypedSelector(state => state.menu);
     const { textInputAction } = useActions();
 

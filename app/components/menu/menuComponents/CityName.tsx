@@ -6,7 +6,7 @@ import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 
 const CityName: FC = () => {
-    const { cityInputText} = useTypedSelector(state => state.menu);
+    const { cityInputText } = useTypedSelector(state => state.menu);
 
 
     return (

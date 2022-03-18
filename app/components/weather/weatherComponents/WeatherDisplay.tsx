@@ -8,15 +8,15 @@ import { usedTextsWeather } from "../../../usedTexts/usedTextsWeather";
 
 
 
-const WeatherDisplay:FC = () => {
+const WeatherDisplay: FC = () => {
 
     const { weatherData } = useTypedSelector(state => state.weather);
     const { isCelsius } = useTypedSelector(state => state.menu);
 
     // Convert to wind direction.
-    const convertWindValue = (value: number):string => {
+    const convertWindValue = (value: number): string => {
         if (!isNaN(value)) {
-            const windDirections:string[] = usedTextsWeather.windDirections;
+            const windDirections: string[] = usedTextsWeather.windDirections;
 
             // Limit wind direction to 360 degrees.
             let intValue = Math.floor(value / 360);
@@ -28,7 +28,7 @@ const WeatherDisplay:FC = () => {
         }
     };
 
-    const convertTempValue = (value: number):string => {
+    const convertTempValue = (value: number): string => {
         let temp = isCelsius ? `${Math.round(value)}°` : `${Math.round(value * 9 / 5 + 32)}°`;
         return temp;
     };

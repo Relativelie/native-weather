@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, Platform } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 
 export const titleAndSwitchColor = "rgba(255, 255, 255, 0.6)";
@@ -7,7 +7,7 @@ export const fontFamilyLatoBold = "latoBold";
 export const fontFamilySans = "sans";
 export const mainValuesFontColor = "rgba(255, 255, 255, 1)";
 export const paddingForMenu = 18;
-export const windowWidth = Dimensions.get("window").width/2 - 10;
+export const windowWidth = Dimensions.get("window").width / 2 - 10;
 
 
 
