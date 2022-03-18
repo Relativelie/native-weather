@@ -1,14 +1,17 @@
 import * as Location from 'expo-location';
 
-export const getLocation = async () => {
+interface ResultType {
+    [key: string]: string | any
+}
 
-    const result = {};
-    let regionName;
+
+export const getLocation = async (): Promise<ResultType> => {
+    const result: ResultType | Promise<object> = {};
+    let regionName: object;
 
     try {
         let { status } = await Location.requestForegroundPermissionsAsync();
         if (status === 'granted') {
-
             // Get latitude and longitude.
             let locationData = await Location.getCurrentPositionAsync({});
 
@@ -17,15 +20,15 @@ export const getLocation = async () => {
                 latitude: locationData.coords.latitude,
                 longitude: locationData.coords.longitude,
             });
-        }
+        };
     }
-    catch {
-        result.error = true;
+    catch (err) {
+        console.log(err)
     }
     finally {
         result.city = regionName != undefined && regionName[0].city;
     }
-    
+
 
     return result;
 }
